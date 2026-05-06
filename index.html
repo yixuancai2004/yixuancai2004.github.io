@@ -45,6 +45,7 @@
       <li><a href="#research" data-zh="研究">Research</a></li>
       <li><a href="#education" data-zh="教育">Education</a></li>
       <li><a href="#misc" data-zh="其他">Misc</a></li>
+      <li><a href="#guestbook" data-zh="留言板">Guestbook</a></li>
     </ul>
 
     <div class="nav-right-box">
@@ -199,6 +200,17 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <div class="divider"><span class="fleuron">❦</span></div>
+
+  <!-- GUESTBOOK -->
+  <section id="guestbook">
+    <h2 class="section-title fade-in" data-zh="留言板">Guestbook</h2>
+    <p class="guestbook-intro fade-in" data-stagger="1" data-zh="欢迎留言！用 GitHub 账号登录后即可发言、回复或点赞。">
+      Welcome — sign in with GitHub to leave a message, reply, or react.
+    </p>
+    <div id="giscus-container" class="fade-in" data-stagger="2"></div>
   </section>
 
   <div class="divider"><span class="fleuron">❦</span></div>
@@ -379,6 +391,7 @@
         btn.innerHTML = '&#9683;';
         btn.title = 'Switch to dark mode';
       }
+      mountGiscus(document.documentElement.lang || 'en');
     }
 
     (function() {
@@ -386,6 +399,43 @@
       btn.innerHTML = '&#9683;';
       btn.title = 'Switch to dark mode';
     })();
+
+    /* === Guestbook (Giscus) ============================================ */
+    /* Mounts the giscus comment widget. Re-mounts on lang/theme changes so
+       both the UI strings inside the widget and its visual theme stay in
+       sync with the page. Re-mount is fast (single iframe). */
+    const GISCUS_CONFIG = {
+      repo: 'yixuancai2004/yixuancai2004.github.io',
+      repoId: 'R_kgDOSVdq3w',
+      category: 'General',
+      categoryId: 'DIC_kwDOSVdq384C8cAg'
+    };
+    function currentGiscusTheme() {
+      const theme = document.documentElement.getAttribute('data-theme');
+      return theme === 'dark' ? 'dark' : 'light';
+    }
+    function mountGiscus(lang) {
+      const container = document.getElementById('giscus-container');
+      if (!container) return;
+      container.innerHTML = '';
+      const s = document.createElement('script');
+      s.src = 'https://giscus.app/client.js';
+      s.setAttribute('data-repo', GISCUS_CONFIG.repo);
+      s.setAttribute('data-repo-id', GISCUS_CONFIG.repoId);
+      s.setAttribute('data-category', GISCUS_CONFIG.category);
+      s.setAttribute('data-category-id', GISCUS_CONFIG.categoryId);
+      s.setAttribute('data-mapping', 'specific');
+      s.setAttribute('data-term', 'guestbook');
+      s.setAttribute('data-strict', '0');
+      s.setAttribute('data-reactions-enabled', '1');
+      s.setAttribute('data-emit-metadata', '0');
+      s.setAttribute('data-input-position', 'top');
+      s.setAttribute('data-theme', currentGiscusTheme());
+      s.setAttribute('data-lang', lang === 'zh' ? 'zh-CN' : 'en');
+      s.setAttribute('crossorigin', 'anonymous');
+      s.async = true;
+      container.appendChild(s);
+    }
 
     /* === Bilingual toggle ============================================== */
     /* On first call, cache the original (English) HTML on each [data-zh]
@@ -402,6 +452,7 @@
         btn.title = lang === 'zh' ? 'Switch to English' : '切换到中文';
       }
       try { localStorage.setItem('lang', lang); } catch (e) {}
+      mountGiscus(lang);
     }
     function toggleLang() {
       applyLang((document.documentElement.lang || 'en') === 'zh' ? 'en' : 'zh');

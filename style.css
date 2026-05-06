@@ -488,6 +488,22 @@ section {
   .gallery-caption { opacity: 1; font-size: 0.85rem; padding: 1rem 0.5rem 0.5rem; }
 }
 
+/* Guestbook (Giscus) */
+.guestbook-intro {
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+}
+#giscus-container { margin-top: 1rem; }
+.giscus, .giscus-frame {
+  width: 100% !important;
+  min-height: 150px;
+}
+
 
 /* Footer */
 footer {
