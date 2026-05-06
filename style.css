@@ -488,46 +488,6 @@ section {
   .gallery-caption { opacity: 1; font-size: 0.85rem; padding: 1rem 0.5rem 0.5rem; }
 }
 
-/* Visitor map */
-.visitor-greeting {
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-style: italic;
-  color: var(--color-accent);
-  margin-bottom: 1.4rem;
-  margin-top: 0.5rem;
-}
-#visitor-map {
-  height: 340px;
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 1px 4px var(--color-card-shadow);
-}
-.visitor-note {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--color-light);
-  font-style: italic;
-  margin-top: 1rem;
-}
-/* Leaflet attribution restyling to fit the page */
-.leaflet-container {
-  font-family: var(--font-body) !important;
-  background: var(--color-bg-warm) !important;
-}
-.leaflet-control-attribution {
-  font-size: 0.7rem !important;
-  background: rgba(255,255,255,0.85) !important;
-}
-:root[data-theme="dark"] #visitor-map { filter: brightness(0.9) hue-rotate(-10deg); }
-@media (max-width: 640px) {
-  #visitor-map { height: 240px; }
-  .visitor-greeting { font-size: 1.05rem; }
-}
 
 /* Footer */
 footer {

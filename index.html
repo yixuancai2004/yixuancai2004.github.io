@@ -28,7 +28,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='82' font-family='Georgia, serif' font-size='95' font-weight='bold' fill='%23c9a96e' text-anchor='middle'>Yc</text></svg>">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -46,7 +45,6 @@
       <li><a href="#research" data-zh="研究">Research</a></li>
       <li><a href="#education" data-zh="教育">Education</a></li>
       <li><a href="#misc" data-zh="其他">Misc</a></li>
-      <li><a href="#visitors" data-zh="访客">Visitors</a></li>
     </ul>
 
     <div class="nav-right-box">
@@ -201,16 +199,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <div class="divider"><span class="fleuron">❦</span></div>
-
-  <!-- VISITORS -->
-  <section id="visitors">
-    <h2 class="section-title fade-in" data-zh="访客地图">Visitors</h2>
-    <p class="visitor-greeting fade-in" data-stagger="1" data-zh="正在定位访客…">Locating visitor…</p>
-    <div id="visitor-map" class="fade-in" data-stagger="2"></div>
-    <p class="visitor-note fade-in" data-stagger="3" data-zh="（仅根据当次访问的 IP 估算，不存储任何信息。）">(Approximate location from your IP — nothing is stored.)</p>
   </section>
 
   <div class="divider"><span class="fleuron">❦</span></div>
@@ -424,63 +412,6 @@
       applyLang(saved === 'zh' ? 'zh' : 'en');
     })();
 
-    /* === Visitor IP map (Leaflet + ipapi.co) =========================== */
-    /* Loads Leaflet on demand, fetches the visitor's approximate location
-       from ipapi.co (free, no key), drops a single marker. Privacy: nothing
-       is stored — the marker is computed in the visitor's browser. */
-    (function initVisitorMap() {
-      const mapEl = document.getElementById('visitor-map');
-      const greetEl = document.querySelector('.visitor-greeting');
-      if (!mapEl) return;
-
-      function loadLeaflet() {
-        return new Promise((resolve, reject) => {
-          if (window.L) return resolve(window.L);
-          const s = document.createElement('script');
-          s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-          s.onload = () => resolve(window.L);
-          s.onerror = reject;
-          document.head.appendChild(s);
-        });
-      }
-
-      Promise.all([
-        loadLeaflet(),
-        fetch('https://ipapi.co/json/').then(r => r.json())
-      ]).then(([L, data]) => {
-        if (!data || data.latitude == null) throw new Error('no location');
-        const lang = document.documentElement.lang;
-        const place = [data.city, data.region, data.country_name].filter(Boolean).join(', ');
-        if (greetEl) {
-          greetEl.dataset.en = `Hello from ${place} ✦`;
-          greetEl.dataset.zh = `欢迎来自 ${place} 的访客 ✦`;
-          greetEl.textContent = lang === 'zh' ? greetEl.dataset.zh : greetEl.dataset.en;
-        }
-        const map = L.map('visitor-map', {
-          zoomControl: true,
-          attributionControl: true,
-          scrollWheelZoom: false
-        }).setView([data.latitude, data.longitude], 4);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '© OpenStreetMap',
-          maxZoom: 12
-        }).addTo(map);
-        L.circleMarker([data.latitude, data.longitude], {
-          radius: 9,
-          color: '#6b3027',
-          fillColor: '#ad8744',
-          fillOpacity: 0.85,
-          weight: 2.5
-        }).addTo(map).bindPopup(place).openPopup();
-      }).catch(() => {
-        if (greetEl) {
-          greetEl.dataset.en = 'Could not load visitor location.';
-          greetEl.dataset.zh = '无法获取访客位置信息。';
-          greetEl.textContent = document.documentElement.lang === 'zh' ? greetEl.dataset.zh : greetEl.dataset.en;
-        }
-        if (mapEl) mapEl.style.display = 'none';
-      });
-    })();
   </script>
 </body>
 </html>
