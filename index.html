@@ -184,10 +184,26 @@
   <!-- GUESTBOOK -->
   <section id="guestbook">
     <h2 class="section-title fade-in" data-zh="留言板">Guestbook</h2>
-    <p class="guestbook-intro fade-in" data-stagger="1" data-zh="欢迎留言！用 GitHub 账号登录后即可发言、回复或点赞。">
-      Welcome — sign in with GitHub to leave a message, reply, or react.
+    <p class="guestbook-intro fade-in" data-stagger="1" data-zh="留个言 ✦">
+      Drop a note ✦
     </p>
-    <div id="cusdis-container" class="fade-in" data-stagger="2"></div>
+
+    <form id="comment-form" class="fade-in" data-stagger="2" autocomplete="off">
+      <div class="form-row">
+        <input type="text" name="nickname" required maxlength="40"
+               placeholder="Name" data-placeholder-en="Name" data-placeholder-zh="名字">
+        <input type="email" name="email" maxlength="120"
+               placeholder="Email (optional)" data-placeholder-en="Email (optional)" data-placeholder-zh="邮箱（可选）">
+      </div>
+      <textarea name="content" required maxlength="1000" rows="3"
+                placeholder="Write a message…" data-placeholder-en="Write a message…" data-placeholder-zh="写下你的留言…"></textarea>
+      <div class="form-actions">
+        <span class="form-status" role="status"></span>
+        <button type="submit" data-zh="发送">Post</button>
+      </div>
+    </form>
+
+    <div id="comments-list" class="fade-in" data-stagger="3" aria-live="polite"></div>
   </section>
 
   <div class="divider"><span class="fleuron">❦</span></div>
@@ -265,7 +281,6 @@
         btn.innerHTML = '&#9683;';
         btn.title = 'Switch to dark mode';
       }
-      mountCusdis(document.documentElement.lang || 'en');
     }
 
     (function() {
@@ -274,41 +289,140 @@
       btn.title = 'Switch to dark mode';
     })();
 
-    /* === Guestbook (Cusdis) ============================================ */
-    /* No login — visitors leave name + message and submit. Re-mounts on
-       lang/theme changes so the widget UI stays in sync with the page. */
+    /* === Guestbook: native render via Cusdis open API ================== */
+    /* No iframe — fetch comments as JSON and render them natively, post via
+       the open API. Output is HTML-escaped so user content can't inject. */
     const CUSDIS_APP_ID = 'c856b637-e9d3-4594-bf53-e09ab01364a6';
-    let cusdisScriptInjected = false;
-    function currentCusdisTheme() {
-      const theme = document.documentElement.getAttribute('data-theme');
-      return theme === 'dark' ? 'dark' : 'light';
+    const CUSDIS_PAGE_ID = 'guestbook';
+    const CUSDIS_HOST = 'https://cusdis.com';
+    const I18N_GUESTBOOK = {
+      en: {
+        empty: 'No messages yet — be the first.',
+        loading: 'Loading messages…',
+        loadFail: 'Could not load messages.',
+        postingError: 'Could not post — please try again.',
+        postingOk: 'Thanks! Your message is awaiting approval.',
+        anon: 'anonymous'
+      },
+      zh: {
+        empty: '还没有留言 —— 来当第一个吧。',
+        loading: '加载留言中…',
+        loadFail: '加载失败。',
+        postingError: '发送失败，请稍后再试。',
+        postingOk: '感谢留言！等待主人审核后公开。',
+        anon: '匿名'
+      }
+    };
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
     }
-    function mountCusdis(lang) {
-      const container = document.getElementById('cusdis-container');
-      if (!container) return;
-      container.innerHTML = '';
-      const div = document.createElement('div');
-      div.id = 'cusdis_thread';
-      div.setAttribute('data-host', 'https://cusdis.com');
-      div.setAttribute('data-app-id', CUSDIS_APP_ID);
-      div.setAttribute('data-page-id', 'guestbook');
-      div.setAttribute('data-page-url', 'https://yixuancai2004.github.io/#guestbook');
-      div.setAttribute('data-page-title', 'Guestbook — Yixuan Cai');
-      div.setAttribute('data-theme', currentCusdisTheme());
-      div.setAttribute('data-lang', lang === 'zh' ? 'zh-cn' : 'en');
-      container.appendChild(div);
-
-      if (cusdisScriptInjected && window.CUSDIS && window.CUSDIS.initial) {
-        window.CUSDIS.initial();
-      } else {
-        const s = document.createElement('script');
-        s.src = 'https://cusdis.com/js/cusdis.es.js';
-        s.async = true;
-        s.defer = true;
-        s.onload = () => { cusdisScriptInjected = true; };
-        document.body.appendChild(s);
+    function formatCommentDate(iso, lang) {
+      try {
+        const d = new Date(iso);
+        return d.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
+          year: 'numeric', month: 'short', day: 'numeric'
+        });
+      } catch (e) { return ''; }
+    }
+    function renderComment(c, lang) {
+      const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
+      const name = c.by_nickname ? escapeHtml(c.by_nickname) : t.anon;
+      const date = formatCommentDate(c.createdAt, lang);
+      const content = escapeHtml(c.content || '').replace(/\n/g, '<br>');
+      const replies = (c.replies && c.replies.data ? c.replies.data : (c.replies || []))
+        .map(r => `<div class="comment-reply">
+            <div class="comment-meta"><strong>${r.by_nickname ? escapeHtml(r.by_nickname) : t.anon}</strong>
+              <span class="comment-date">· ${formatCommentDate(r.createdAt, lang)}</span></div>
+            <div class="comment-content">${escapeHtml(r.content || '').replace(/\n/g, '<br>')}</div>
+          </div>`).join('');
+      return `<article class="comment">
+        <div class="comment-meta"><strong>${name}</strong>
+          <span class="comment-date">· ${date}</span></div>
+        <div class="comment-content">${content}</div>
+        ${replies}
+      </article>`;
+    }
+    let commentCache = null;
+    async function fetchComments() {
+      const url = `${CUSDIS_HOST}/api/open/comments?appId=${CUSDIS_APP_ID}&pageId=${CUSDIS_PAGE_ID}&pageSize=200`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('fetch failed');
+      const json = await res.json();
+      const list = (json && json.data && json.data.data) ? json.data.data : (json.data || []);
+      commentCache = list;
+      return list;
+    }
+    function renderCommentsList(comments, lang) {
+      const list = document.getElementById('comments-list');
+      if (!list) return;
+      const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
+      if (!comments || !comments.length) {
+        list.innerHTML = `<p class="comments-empty">${t.empty}</p>`;
+        return;
+      }
+      list.innerHTML = comments.map(c => renderComment(c, lang)).join('');
+    }
+    async function loadAndRenderComments(lang) {
+      const list = document.getElementById('comments-list');
+      const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
+      list.innerHTML = `<p class="comments-loading">${t.loading}</p>`;
+      try {
+        const comments = await fetchComments();
+        renderCommentsList(comments, lang);
+      } catch (e) {
+        list.innerHTML = `<p class="comments-empty">${t.loadFail}</p>`;
       }
     }
+    function applyGuestbookLang(lang) {
+      document.querySelectorAll('#comment-form [data-placeholder-en]').forEach(el => {
+        el.placeholder = lang === 'zh' ? el.dataset.placeholderZh : el.dataset.placeholderEn;
+      });
+      if (commentCache) {
+        renderCommentsList(commentCache, lang);
+      } else {
+        loadAndRenderComments(lang);
+      }
+    }
+    (function setupCommentForm() {
+      const form = document.getElementById('comment-form');
+      if (!form) return;
+      const status = form.querySelector('.form-status');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const lang = document.documentElement.lang || 'en';
+        const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
+        const fd = new FormData(form);
+        const body = {
+          appId: CUSDIS_APP_ID,
+          pageId: CUSDIS_PAGE_ID,
+          pageTitle: 'Guestbook — Yixuan Cai',
+          pageUrl: 'https://yixuancai2004.github.io/#guestbook',
+          content: fd.get('content'),
+          email: fd.get('email') || '',
+          nickname: fd.get('nickname')
+        };
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        status.textContent = '…';
+        try {
+          const res = await fetch(`${CUSDIS_HOST}/api/open/comments`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+          if (!res.ok) throw new Error('post failed');
+          status.textContent = t.postingOk;
+          form.reset();
+        } catch (err) {
+          status.textContent = t.postingError;
+        } finally {
+          btn.disabled = false;
+          setTimeout(() => { status.textContent = ''; }, 6000);
+        }
+      });
+    })();
 
     /* === Bilingual toggle ============================================== */
     /* On first call, cache the original (English) HTML on each [data-zh]
@@ -325,7 +439,7 @@
         btn.title = lang === 'zh' ? 'Switch to English' : '切换到中文';
       }
       try { localStorage.setItem('lang', lang); } catch (e) {}
-      mountCusdis(lang);
+      applyGuestbookLang(lang);
     }
     function toggleLang() {
       applyLang((document.documentElement.lang || 'en') === 'zh' ? 'en' : 'zh');
