@@ -146,6 +146,7 @@ nav.scrolled { box-shadow: 0 1px 8px var(--color-shadow); }
   object-position: 75% 45%;
   display: block;
   border-radius: 2px;
+  filter: brightness(1.18) contrast(1.04);
 }
 /* Double-line antique frame */
 .hero-photo-wrapper::before {
@@ -529,7 +530,7 @@ footer {
   .fade-in { opacity: 1; transform: none; transition: none; }
 }
 
-:root[data-theme="dark"] .hero-photo { filter: brightness(0.92); }
+:root[data-theme="dark"] .hero-photo { filter: brightness(1.05) contrast(1.04); }
 
 body, nav { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
 
