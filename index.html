@@ -210,7 +210,7 @@
     <p class="guestbook-intro fade-in" data-stagger="1" data-zh="欢迎留言！用 GitHub 账号登录后即可发言、回复或点赞。">
       Welcome — sign in with GitHub to leave a message, reply, or react.
     </p>
-    <div id="giscus-container" class="fade-in" data-stagger="2"></div>
+    <div id="cusdis-container" class="fade-in" data-stagger="2"></div>
   </section>
 
   <div class="divider"><span class="fleuron">❦</span></div>
@@ -391,7 +391,7 @@
         btn.innerHTML = '&#9683;';
         btn.title = 'Switch to dark mode';
       }
-      mountGiscus(document.documentElement.lang || 'en');
+      mountCusdis(document.documentElement.lang || 'en');
     }
 
     (function() {
@@ -400,41 +400,40 @@
       btn.title = 'Switch to dark mode';
     })();
 
-    /* === Guestbook (Giscus) ============================================ */
-    /* Mounts the giscus comment widget. Re-mounts on lang/theme changes so
-       both the UI strings inside the widget and its visual theme stay in
-       sync with the page. Re-mount is fast (single iframe). */
-    const GISCUS_CONFIG = {
-      repo: 'yixuancai2004/yixuancai2004.github.io',
-      repoId: 'R_kgDOSVdq3w',
-      category: 'General',
-      categoryId: 'DIC_kwDOSVdq384C8cAg'
-    };
-    function currentGiscusTheme() {
+    /* === Guestbook (Cusdis) ============================================ */
+    /* No login — visitors leave name + message and submit. Re-mounts on
+       lang/theme changes so the widget UI stays in sync with the page. */
+    const CUSDIS_APP_ID = 'c856b637-e9d3-4594-bf53-e09ab01364a6';
+    let cusdisScriptInjected = false;
+    function currentCusdisTheme() {
       const theme = document.documentElement.getAttribute('data-theme');
       return theme === 'dark' ? 'dark' : 'light';
     }
-    function mountGiscus(lang) {
-      const container = document.getElementById('giscus-container');
+    function mountCusdis(lang) {
+      const container = document.getElementById('cusdis-container');
       if (!container) return;
       container.innerHTML = '';
-      const s = document.createElement('script');
-      s.src = 'https://giscus.app/client.js';
-      s.setAttribute('data-repo', GISCUS_CONFIG.repo);
-      s.setAttribute('data-repo-id', GISCUS_CONFIG.repoId);
-      s.setAttribute('data-category', GISCUS_CONFIG.category);
-      s.setAttribute('data-category-id', GISCUS_CONFIG.categoryId);
-      s.setAttribute('data-mapping', 'specific');
-      s.setAttribute('data-term', 'guestbook');
-      s.setAttribute('data-strict', '0');
-      s.setAttribute('data-reactions-enabled', '1');
-      s.setAttribute('data-emit-metadata', '0');
-      s.setAttribute('data-input-position', 'top');
-      s.setAttribute('data-theme', currentGiscusTheme());
-      s.setAttribute('data-lang', lang === 'zh' ? 'zh-CN' : 'en');
-      s.setAttribute('crossorigin', 'anonymous');
-      s.async = true;
-      container.appendChild(s);
+      const div = document.createElement('div');
+      div.id = 'cusdis_thread';
+      div.setAttribute('data-host', 'https://cusdis.com');
+      div.setAttribute('data-app-id', CUSDIS_APP_ID);
+      div.setAttribute('data-page-id', 'guestbook');
+      div.setAttribute('data-page-url', 'https://yixuancai2004.github.io/#guestbook');
+      div.setAttribute('data-page-title', 'Guestbook — Yixuan Cai');
+      div.setAttribute('data-theme', currentCusdisTheme());
+      div.setAttribute('data-lang', lang === 'zh' ? 'zh-cn' : 'en');
+      container.appendChild(div);
+
+      if (cusdisScriptInjected && window.CUSDIS && window.CUSDIS.initial) {
+        window.CUSDIS.initial();
+      } else {
+        const s = document.createElement('script');
+        s.src = 'https://cusdis.com/js/cusdis.es.js';
+        s.async = true;
+        s.defer = true;
+        s.onload = () => { cusdisScriptInjected = true; };
+        document.body.appendChild(s);
+      }
     }
 
     /* === Bilingual toggle ============================================== */
@@ -452,7 +451,7 @@
         btn.title = lang === 'zh' ? 'Switch to English' : '切换到中文';
       }
       try { localStorage.setItem('lang', lang); } catch (e) {}
-      mountGiscus(lang);
+      mountCusdis(lang);
     }
     function toggleLang() {
       applyLang((document.documentElement.lang || 'en') === 'zh' ? 'en' : 'zh');

@@ -498,10 +498,10 @@ section {
   margin-bottom: 1.5rem;
   margin-top: 0.5rem;
 }
-#giscus-container { margin-top: 1rem; }
-.giscus, .giscus-frame {
+#cusdis-container { margin-top: 1rem; min-height: 200px; }
+#cusdis_thread iframe {
   width: 100% !important;
-  min-height: 150px;
+  background: var(--color-bg) !important;
 }
 
 
