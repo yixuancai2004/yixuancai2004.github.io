@@ -90,15 +90,15 @@
   <div class="divider"><span class="fleuron">❦</span></div>
 
   <!-- RESEARCH -->
-  <section id="research" class="fade-in">
-    <h2 class="section-title">Research</h2>
+  <section id="research">
+    <h2 class="section-title fade-in">Research</h2>
 
-    <div class="research-interests">
+    <div class="research-interests fade-in" data-stagger="1">
       <span class="interest-tag">Differential Privacy</span>
       <span class="interest-tag">AI Privacy</span>
     </div>
 
-    <p class="research-intro">
+    <p class="research-intro fade-in" data-stagger="2">
       I am broadly interested in privacy-preserving data analysis and machine learning —
       from the foundations and mechanisms of differential privacy to privacy challenges
       that arise in modern AI systems. More details and papers coming soon.
@@ -108,10 +108,10 @@
   <div class="divider"><span class="fleuron">❦</span></div>
 
   <!-- EDUCATION -->
-  <section id="education" class="fade-in">
-    <h2 class="section-title">Education</h2>
+  <section id="education">
+    <h2 class="section-title fade-in">Education</h2>
     <div style="margin-top: 2rem;">
-      <div class="edu-item">
+      <div class="edu-item fade-in">
         <span class="edu-year">2026 –</span>
         <div class="edu-details">
           <h3>Ph.D.</h3>
@@ -119,14 +119,14 @@
           <div class="field">College of Computing and Data Science (CCDS)</div>
         </div>
       </div>
-      <div class="edu-item">
+      <div class="edu-item fade-in">
         <span class="edu-year">Jan – May 2025</span>
         <div class="edu-details">
           <h3>Visiting Student</h3>
           <div class="school">University of California, Berkeley</div>
         </div>
       </div>
-      <div class="edu-item">
+      <div class="edu-item fade-in">
         <span class="edu-year">2022 – 26</span>
         <div class="edu-details">
           <h3>B.A. in Economics</h3>
@@ -140,12 +140,12 @@
   <div class="divider"><span class="fleuron">❦</span></div>
 
   <!-- MISCELLANEOUS -->
-  <section id="misc" class="fade-in">
-    <h2 class="section-title">Miscellaneous</h2>
-    <p class="misc-text">
+  <section id="misc">
+    <h2 class="section-title fade-in">Miscellaneous</h2>
+    <p class="misc-text fade-in" data-stagger="1">
       Outside of research, I enjoy travel, photography, and good coffee.
     </p>
-    <p class="misc-text">
+    <p class="misc-text fade-in" data-stagger="2">
       My Chinese given name 逸轩 (yì xuān) carries the meaning of leisured grace —
       a feeling I try to bring to both my work and my life.
     </p>
@@ -167,10 +167,33 @@
       document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      /* Fallback: if observer hasn't fired for above-fold items shortly after
+         load, reveal them so the page never sits blank. */
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+              el.classList.add('visible');
+              observer.unobserve(el);
+            }
+          });
+        }, 100);
+      });
+    } else {
+      /* No observer support → reveal everything immediately. */
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }
 
     function toggleMenu() {
       const links = document.querySelector('.nav-links');
