@@ -28,26 +28,6 @@
   --section-gap: 2.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-ink: #ede4d2;
-    --color-text: #cabea7;
-    --color-muted: #998973;
-    --color-light: #6f614e;
-    --color-border: #3a3024;
-    --color-bg: #1a1410;
-    --color-bg-warm: #261d15;
-    --color-accent: #d39a8d;
-    --color-accent-light: #e3b6a9;
-    --color-highlight: #c9a96e;
-    --color-card: #261d15;
-    --color-nav-bg: rgba(26,20,16,0.93);
-    --color-nav-bg-solid: rgba(26,20,16,0.98);
-    --color-shadow: rgba(0,0,0,0.3);
-    --color-card-shadow: rgba(0,0,0,0.18);
-  }
-}
-
 :root[data-theme="dark"] {
   --color-ink: #ede4d2;
   --color-text: #cabea7;
@@ -195,6 +175,15 @@ nav.scrolled { box-shadow: 0 1px 8px var(--color-shadow); }
   line-height: 1.05;
   margin-bottom: 0.1rem;
   letter-spacing: -0.005em;
+}
+.hero-name-en-alt {
+  font-size: 0.55em;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-muted);
+  letter-spacing: 0;
+  margin-left: 0.15em;
+  vertical-align: 0.18em;
 }
 .hero-name-cn {
   font-family: var(--font-display);
@@ -452,9 +441,6 @@ footer {
 .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .hero-photo { filter: brightness(0.92); }
-}
 :root[data-theme="dark"] .hero-photo { filter: brightness(0.92); }
 
 body, nav { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
