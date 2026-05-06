@@ -28,6 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='82' font-family='Georgia, serif' font-size='95' font-weight='bold' fill='%23c9a96e' text-anchor='middle'>Yc</text></svg>">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,13 +42,15 @@
     </button>
 
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#misc">Misc</a></li>
+      <li><a href="#about" data-zh="关于">About</a></li>
+      <li><a href="#research" data-zh="研究">Research</a></li>
+      <li><a href="#education" data-zh="教育">Education</a></li>
+      <li><a href="#misc" data-zh="其他">Misc</a></li>
+      <li><a href="#visitors" data-zh="访客">Visitors</a></li>
     </ul>
 
     <div class="nav-right-box">
+      <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">中</button>
       <button class="theme-toggle" onclick="toggleTheme()" title="Switch mode">&#9683;</button>
     </div>
   </div>
@@ -62,11 +65,11 @@
       <h1 class="hero-name">Yixuan Cai <span class="hero-name-en-alt">(Ivan)</span></h1>
       <div class="hero-name-cn">蔡逸轩 <span style="font-size: 0.95rem; color: var(--color-light); font-weight: 400;">(Cài Yìxuān)</span></div>
       <div class="pronunciation">
-        Pronunciation: <span class="ipa">/tsaɪ ji.ɕɥɛn/</span>
+        <span data-zh="发音：">Pronunciation:</span> <span class="ipa">/tsaɪ ji.ɕɥɛn/</span>
       </div>
-      <div class="hero-affiliation">Nanyang Technological University</div>
-      <div class="hero-title">PhD Student, College of Computing and Data Science</div>
-      <p class="hero-bio">
+      <div class="hero-affiliation" data-zh="南洋理工大学">Nanyang Technological University</div>
+      <div class="hero-title" data-zh="计算与数据科学学院 博士生">PhD Student, College of Computing and Data Science</div>
+      <p class="hero-bio" data-zh='我是南洋理工大学 <a href="https://www.ntu.edu.sg/computing">计算与数据科学学院（CCDS）</a> 的博士生，导师为 <a href="https://ntu-dps.com/">董威 教授</a>。我本科毕业于 <a href="https://www.nju.edu.cn/">南京大学</a> 商学院 经济学专业（拔尖班）。2025 年春季在 <a href="https://www.berkeley.edu/">加州大学伯克利分校</a> 交流访学。目前在 <a href="https://alva.ai/">Alva AI</a> 实习。'>
         I am a PhD student at the
         <a href="https://www.ntu.edu.sg/computing">College of Computing and Data Science (CCDS)</a>,
         Nanyang Technological University, where I am fortunate to be advised by
@@ -77,11 +80,11 @@
         <a href="https://www.berkeley.edu/">UC Berkeley</a>.
         I am currently interning at <a href="https://alva.ai/">Alva AI</a>.
       </p>
-      <p class="hero-bio">
+      <p class="hero-bio" data-zh='研究方向：<strong>差分隐私（Differential Privacy）</strong> 与 <strong>AI 隐私（AI Privacy）</strong>。'>
         My research interests lie in <strong>Differential Privacy</strong> and <strong>AI Privacy</strong>.
       </p>
       <div class="hero-links">
-        <a href="mailto:yixuancai2004@163.com" class="primary">&#9993; Email</a>
+        <a href="mailto:yixuancai2004@163.com" class="primary" data-zh="✉ 邮件">&#9993; Email</a>
         <a href="https://github.com/yixuancai2004">GitHub</a>
       </div>
     </div>
@@ -91,14 +94,14 @@
 
   <!-- RESEARCH -->
   <section id="research">
-    <h2 class="section-title fade-in">Research</h2>
+    <h2 class="section-title fade-in" data-zh="研究">Research</h2>
 
     <div class="research-interests fade-in" data-stagger="1">
-      <span class="interest-tag">Differential Privacy</span>
-      <span class="interest-tag">AI Privacy</span>
+      <span class="interest-tag" data-zh="差分隐私">Differential Privacy</span>
+      <span class="interest-tag" data-zh="AI 隐私">AI Privacy</span>
     </div>
 
-    <p class="research-intro fade-in" data-stagger="2">
+    <p class="research-intro fade-in" data-stagger="2" data-zh="我对隐私保护下的数据分析与机器学习感兴趣 —— 从差分隐私的理论基础与机制设计，到现代 AI 系统中的隐私挑战。论文与详情稍后更新。">
       I am broadly interested in privacy-preserving data analysis and machine learning —
       from the foundations and mechanisms of differential privacy to privacy challenges
       that arise in modern AI systems. More details and papers coming soon.
@@ -109,29 +112,29 @@
 
   <!-- EDUCATION -->
   <section id="education">
-    <h2 class="section-title fade-in">Education</h2>
+    <h2 class="section-title fade-in" data-zh="教育">Education</h2>
     <div style="margin-top: 2rem;">
       <div class="edu-item fade-in">
         <span class="edu-year">2026 –</span>
         <div class="edu-details">
-          <h3>Ph.D.</h3>
-          <div class="school">Nanyang Technological University</div>
-          <div class="field">College of Computing and Data Science (CCDS)</div>
+          <h3 data-zh="博士">Ph.D.</h3>
+          <div class="school" data-zh="南洋理工大学">Nanyang Technological University</div>
+          <div class="field" data-zh="计算与数据科学学院（CCDS）">College of Computing and Data Science (CCDS)</div>
         </div>
       </div>
       <div class="edu-item fade-in">
-        <span class="edu-year">Jan – May 2025</span>
+        <span class="edu-year" data-zh="2025 年 1–5 月">Jan – May 2025</span>
         <div class="edu-details">
-          <h3>Visiting Student</h3>
-          <div class="school">University of California, Berkeley</div>
+          <h3 data-zh="访问学生">Visiting Student</h3>
+          <div class="school" data-zh="加州大学伯克利分校">University of California, Berkeley</div>
         </div>
       </div>
       <div class="edu-item fade-in">
         <span class="edu-year">2022 – 26</span>
         <div class="edu-details">
-          <h3>B.A. in Economics</h3>
-          <div class="school">Nanjing University</div>
-          <div class="field">Elite Class, School of Business</div>
+          <h3 data-zh="经济学学士">B.A. in Economics</h3>
+          <div class="school" data-zh="南京大学">Nanjing University</div>
+          <div class="field" data-zh="商学院 拔尖班">Elite Class, School of Business</div>
         </div>
       </div>
     </div>
@@ -141,13 +144,13 @@
 
   <!-- MISCELLANEOUS -->
   <section id="misc">
-    <h2 class="section-title fade-in">Miscellaneous</h2>
-    <p class="misc-text fade-in" data-stagger="1">
+    <h2 class="section-title fade-in" data-zh="其他">Miscellaneous</h2>
+    <p class="misc-text fade-in" data-stagger="1" data-zh="工作之余，我的日子里少不了 <em>嘻哈</em>、<em>咖啡</em>、<em>阅读</em>、<em>骑行</em>，偶尔来一杯 <em>鸡尾酒</em>。">
       Outside of research, my days are filled with
       <em>hip-hop</em>, <em>coffee</em>, <em>books</em>, <em>cycling</em>, and the
       occasional <em>cocktail</em>.
     </p>
-    <p class="misc-text fade-in" data-stagger="2">
+    <p class="misc-text fade-in" data-stagger="2" data-zh="稍 geek 的一面：折腾 <em>量化金融</em> 与 <em>vibe coding</em>。">
       On the geekier side, I tinker with <em>quantitative finance</em> and
       <em>vibe coding</em>.
     </p>
@@ -157,44 +160,44 @@
       <div class="gallery-track">
         <div class="gallery-item">
           <img src="gallery/cocktails.jpg" alt="Cocktails on the bar" loading="lazy">
-          <div class="gallery-caption">Cocktails</div>
+          <div class="gallery-caption" data-zh="鸡尾酒">Cocktails</div>
         </div>
         <div class="gallery-item">
           <img src="gallery/quant.jpg" alt="Quant finance on a laptop" loading="lazy">
-          <div class="gallery-caption">Quant Finance</div>
+          <div class="gallery-caption" data-zh="量化金融">Quant Finance</div>
         </div>
         <div class="gallery-item">
           <img src="gallery/coffee-view.jpg" alt="Coffee with a hilltop view" loading="lazy">
-          <div class="gallery-caption">Coffee, hilltop view</div>
+          <div class="gallery-caption" data-zh="山顶咖啡">Coffee, hilltop view</div>
         </div>
         <div class="gallery-item">
           <img src="gallery/coffee-pourover.jpg" alt="Pour-over coffee setup" loading="lazy">
-          <div class="gallery-caption">Pour-over</div>
+          <div class="gallery-caption" data-zh="手冲咖啡">Pour-over</div>
         </div>
         <div class="gallery-item">
           <img src="gallery/coffee-kettle.jpg" alt="Pour-over kettle with thermometer" loading="lazy">
-          <div class="gallery-caption">Slow brew</div>
+          <div class="gallery-caption" data-zh="慢煮">Slow brew</div>
         </div>
         <!-- Duplicate set for seamless looping -->
         <div class="gallery-item" aria-hidden="true">
           <img src="gallery/cocktails.jpg" alt="" loading="lazy">
-          <div class="gallery-caption">Cocktails</div>
+          <div class="gallery-caption" data-zh="鸡尾酒">Cocktails</div>
         </div>
         <div class="gallery-item" aria-hidden="true">
           <img src="gallery/quant.jpg" alt="" loading="lazy">
-          <div class="gallery-caption">Quant Finance</div>
+          <div class="gallery-caption" data-zh="量化金融">Quant Finance</div>
         </div>
         <div class="gallery-item" aria-hidden="true">
           <img src="gallery/coffee-view.jpg" alt="" loading="lazy">
-          <div class="gallery-caption">Coffee, hilltop view</div>
+          <div class="gallery-caption" data-zh="山顶咖啡">Coffee, hilltop view</div>
         </div>
         <div class="gallery-item" aria-hidden="true">
           <img src="gallery/coffee-pourover.jpg" alt="" loading="lazy">
-          <div class="gallery-caption">Pour-over</div>
+          <div class="gallery-caption" data-zh="手冲咖啡">Pour-over</div>
         </div>
         <div class="gallery-item" aria-hidden="true">
           <img src="gallery/coffee-kettle.jpg" alt="" loading="lazy">
-          <div class="gallery-caption">Slow brew</div>
+          <div class="gallery-caption" data-zh="慢煮">Slow brew</div>
         </div>
       </div>
     </div>
@@ -202,13 +205,23 @@
 
   <div class="divider"><span class="fleuron">❦</span></div>
 
+  <!-- VISITORS -->
+  <section id="visitors">
+    <h2 class="section-title fade-in" data-zh="访客地图">Visitors</h2>
+    <p class="visitor-greeting fade-in" data-stagger="1" data-zh="正在定位访客…">Locating visitor…</p>
+    <div id="visitor-map" class="fade-in" data-stagger="2"></div>
+    <p class="visitor-note fade-in" data-stagger="3" data-zh="（仅根据当次访问的 IP 估算，不存储任何信息。）">(Approximate location from your IP — nothing is stored.)</p>
+  </section>
+
+  <div class="divider"><span class="fleuron">❦</span></div>
+
   <footer>
-    <div class="footer-contact">
+    <div class="footer-contact" data-zh='<strong>蔡逸轩 (Ivan)</strong> · 南洋理工大学 计算与数据科学学院<br>Block S3, 01c-101, 50 Nanyang Avenue, Singapore<br><a href="mailto:yixuancai2004@163.com">yixuancai2004@163.com</a>'>
       <strong>Yixuan Cai</strong> &middot; College of Computing and Data Science, NTU<br>
       Block S3, 01c-101, 50 Nanyang Avenue, Singapore<br>
       <a href="mailto:yixuancai2004@163.com">yixuancai2004@163.com</a>
     </div>
-    <div class="footer-copy">&copy; 2026 Yixuan Cai &middot; Last updated: May 2026</div>
+    <div class="footer-copy" data-zh="© 2026 Yixuan Cai · 最后更新：2026 年 5 月">&copy; 2026 Yixuan Cai &middot; Last updated: May 2026</div>
   </footer>
 
   <script>
@@ -384,6 +397,89 @@
       const btn = document.querySelector('.theme-toggle');
       btn.innerHTML = '&#9683;';
       btn.title = 'Switch to dark mode';
+    })();
+
+    /* === Bilingual toggle ============================================== */
+    /* On first call, cache the original (English) HTML on each [data-zh]
+       element via dataset.en, then swap innerHTML based on current lang. */
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-zh]').forEach(el => {
+        if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+        el.innerHTML = lang === 'zh' ? el.getAttribute('data-zh') : el.dataset.en;
+      });
+      const btn = document.querySelector('.lang-toggle');
+      if (btn) {
+        btn.textContent = lang === 'zh' ? 'EN' : '中';
+        btn.title = lang === 'zh' ? 'Switch to English' : '切换到中文';
+      }
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    function toggleLang() {
+      applyLang((document.documentElement.lang || 'en') === 'zh' ? 'en' : 'zh');
+    }
+    (function initLang() {
+      let saved = null;
+      try { saved = localStorage.getItem('lang'); } catch (e) {}
+      applyLang(saved === 'zh' ? 'zh' : 'en');
+    })();
+
+    /* === Visitor IP map (Leaflet + ipapi.co) =========================== */
+    /* Loads Leaflet on demand, fetches the visitor's approximate location
+       from ipapi.co (free, no key), drops a single marker. Privacy: nothing
+       is stored — the marker is computed in the visitor's browser. */
+    (function initVisitorMap() {
+      const mapEl = document.getElementById('visitor-map');
+      const greetEl = document.querySelector('.visitor-greeting');
+      if (!mapEl) return;
+
+      function loadLeaflet() {
+        return new Promise((resolve, reject) => {
+          if (window.L) return resolve(window.L);
+          const s = document.createElement('script');
+          s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+          s.onload = () => resolve(window.L);
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+
+      Promise.all([
+        loadLeaflet(),
+        fetch('https://ipapi.co/json/').then(r => r.json())
+      ]).then(([L, data]) => {
+        if (!data || data.latitude == null) throw new Error('no location');
+        const lang = document.documentElement.lang;
+        const place = [data.city, data.region, data.country_name].filter(Boolean).join(', ');
+        if (greetEl) {
+          greetEl.dataset.en = `Hello from ${place} ✦`;
+          greetEl.dataset.zh = `欢迎来自 ${place} 的访客 ✦`;
+          greetEl.textContent = lang === 'zh' ? greetEl.dataset.zh : greetEl.dataset.en;
+        }
+        const map = L.map('visitor-map', {
+          zoomControl: true,
+          attributionControl: true,
+          scrollWheelZoom: false
+        }).setView([data.latitude, data.longitude], 4);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap',
+          maxZoom: 12
+        }).addTo(map);
+        L.circleMarker([data.latitude, data.longitude], {
+          radius: 9,
+          color: '#6b3027',
+          fillColor: '#ad8744',
+          fillOpacity: 0.85,
+          weight: 2.5
+        }).addTo(map).bindPopup(place).openPopup();
+      }).catch(() => {
+        if (greetEl) {
+          greetEl.dataset.en = 'Could not load visitor location.';
+          greetEl.dataset.zh = '无法获取访客位置信息。';
+          greetEl.textContent = document.documentElement.lang === 'zh' ? greetEl.dataset.zh : greetEl.dataset.en;
+        }
+        if (mapEl) mapEl.style.display = 'none';
+      });
     })();
   </script>
 </body>
