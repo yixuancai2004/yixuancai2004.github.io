@@ -6,22 +6,22 @@
 .nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 :root {
-  /* Vintage warm palette: parchment + sepia + aged gold + oxblood */
-  --color-ink: #2a1f17;
-  --color-text: #463528;
-  --color-muted: #8a715c;
-  --color-light: #b29985;
-  --color-border: #d8c5a8;
-  --color-bg: #f5ecd9;
-  --color-bg-warm: #ecddc1;
+  /* Clean white with vintage accents: oxblood + aged gold */
+  --color-ink: #1d1812;
+  --color-text: #3a3128;
+  --color-muted: #7a6f60;
+  --color-light: #b3a99a;
+  --color-border: #ebe5d6;
+  --color-bg: #ffffff;
+  --color-bg-warm: #faf6ec;
   --color-accent: #6b3027;
   --color-accent-light: #8c4a3e;
   --color-highlight: #ad8744;
-  --color-card: #faf3e0;
-  --color-nav-bg: rgba(245,236,217,0.93);
-  --color-nav-bg-solid: rgba(245,236,217,0.98);
-  --color-shadow: rgba(70,40,20,0.08);
-  --color-card-shadow: rgba(70,40,20,0.06);
+  --color-card: #ffffff;
+  --color-nav-bg: rgba(255,255,255,0.92);
+  --color-nav-bg-solid: rgba(255,255,255,0.98);
+  --color-shadow: rgba(40,30,15,0.06);
+  --color-card-shadow: rgba(40,30,15,0.04);
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'EB Garamond', Georgia, 'Times New Roman', serif;
   --max-width: 880px;
@@ -67,21 +67,21 @@
 }
 
 :root[data-theme="light"] {
-  --color-ink: #2a1f17;
-  --color-text: #463528;
-  --color-muted: #8a715c;
-  --color-light: #b29985;
-  --color-border: #d8c5a8;
-  --color-bg: #f5ecd9;
-  --color-bg-warm: #ecddc1;
+  --color-ink: #1d1812;
+  --color-text: #3a3128;
+  --color-muted: #7a6f60;
+  --color-light: #b3a99a;
+  --color-border: #ebe5d6;
+  --color-bg: #ffffff;
+  --color-bg-warm: #faf6ec;
   --color-accent: #6b3027;
   --color-accent-light: #8c4a3e;
   --color-highlight: #ad8744;
-  --color-card: #faf3e0;
-  --color-nav-bg: rgba(245,236,217,0.93);
-  --color-nav-bg-solid: rgba(245,236,217,0.98);
-  --color-shadow: rgba(70,40,20,0.08);
-  --color-card-shadow: rgba(70,40,20,0.06);
+  --color-card: #ffffff;
+  --color-nav-bg: rgba(255,255,255,0.92);
+  --color-nav-bg-solid: rgba(255,255,255,0.98);
+  --color-shadow: rgba(40,30,15,0.06);
+  --color-card-shadow: rgba(40,30,15,0.04);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -95,17 +95,6 @@ body {
   font-feature-settings: 'kern', 'liga', 'onum';
 }
 
-/* Subtle paper texture via radial gradient noise */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(120,80,40,0.025) 0, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(120,80,40,0.025) 0, transparent 50%);
-}
 
 a { color: var(--color-accent); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--color-accent-light); }
@@ -177,7 +166,6 @@ nav.scrolled { box-shadow: 0 1px 8px var(--color-shadow); }
   object-position: 75% 45%;
   display: block;
   border-radius: 2px;
-  filter: sepia(0.08) contrast(1.02);
 }
 /* Double-line antique frame */
 .hero-photo-wrapper::before {
@@ -465,9 +453,9 @@ footer {
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .hero-photo { filter: sepia(0.15) contrast(1.0) brightness(0.92); }
+  :root:not([data-theme="light"]) .hero-photo { filter: brightness(0.92); }
 }
-:root[data-theme="dark"] .hero-photo { filter: sepia(0.15) contrast(1.0) brightness(0.92); }
+:root[data-theme="dark"] .hero-photo { filter: brightness(0.92); }
 
 body, nav { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
 
