@@ -101,12 +101,12 @@ nav.scrolled { box-shadow: 0 1px 8px var(--color-shadow); }
 .nav-links { display: flex; gap: 1.8rem; list-style: none; }
 .nav-links a {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 500;
+  font-style: italic;
   color: var(--color-muted);
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.01em;
   transition: color 0.2s;
   position: relative;
 }
@@ -222,25 +222,25 @@ nav.scrolled { box-shadow: 0 1px 8px var(--color-shadow); }
 }
 .hero-affiliation {
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--color-accent);
   font-weight: 600;
   font-style: italic;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.2rem;
 }
 .hero-title {
   font-size: 1rem;
   color: var(--color-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
   font-style: italic;
 }
 .hero-bio {
   font-size: 1.05rem;
-  line-height: 1.75;
+  line-height: 1.78;
   color: var(--color-text);
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
-.hero-bio:last-of-type { margin-bottom: 1.8rem; }
+.hero-bio:last-of-type { margin-bottom: 2rem; }
 .hero-bio strong {
   font-family: var(--font-display);
   font-style: italic;
@@ -253,15 +253,15 @@ nav.scrolled { box-shadow: 0 1px 8px var(--color-shadow); }
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  font-style: italic;
+  letter-spacing: 0.01em;
   color: var(--color-accent);
-  padding: 0.45rem 1.1rem;
+  padding: 0.45rem 1.2rem;
   border: 1px solid var(--color-accent);
   border-radius: 2px;
   transition: all 0.25s ease;
-  text-transform: uppercase;
 }
 .hero-links a:hover { background: var(--color-accent); color: var(--color-bg); }
 .hero-links a.primary { background: var(--color-accent); color: var(--color-bg); }
@@ -276,15 +276,15 @@ section {
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
+  font-style: italic;
   color: var(--color-ink);
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0;
   text-align: center;
   position: relative;
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
 }
 .section-title::after {
   content: '';
@@ -292,9 +292,10 @@ section {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 50px;
+  width: 36px;
   height: 1px;
   background: var(--color-highlight);
+  opacity: 0.7;
 }
 .section-subtitle { font-size: 0.95rem; color: var(--color-muted); margin-bottom: 2rem; font-style: italic; text-align: center; }
 
@@ -381,19 +382,20 @@ section {
 /* Education */
 .edu-item {
   display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 1.5rem;
-  margin-bottom: 1.8rem;
+  grid-template-columns: 130px 1fr;
+  gap: 1.8rem;
+  margin-bottom: 2rem;
   align-items: baseline;
 }
 .edu-year {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-style: italic;
   font-weight: 500;
   color: var(--color-highlight);
   font-variant-numeric: oldstyle-nums;
   font-feature-settings: 'onum' 1;
+  text-align: right;
 }
 .edu-details h3 {
   font-family: var(--font-display);
@@ -423,70 +425,6 @@ section {
   font-weight: 500;
 }
 
-/* Gallery: horizontal auto-scrolling 16:9 marquee with hover captions */
-.gallery-marquee {
-  position: relative;
-  margin-top: 2.5rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  cursor: grab;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-}
-.gallery-marquee::-webkit-scrollbar { display: none; }
-.gallery-marquee.dragging { cursor: grabbing; }
-.gallery-track {
-  display: flex;
-  gap: 16px;
-  width: max-content;
-  padding: 0.5rem;
-}
-.gallery-item {
-  flex: 0 0 auto;
-  width: 380px;
-  aspect-ratio: 16 / 9;
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
-  background: var(--color-bg-warm);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 1px 4px var(--color-card-shadow);
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.gallery-item:hover {
-  box-shadow: 0 4px 14px var(--color-shadow);
-  transform: translateY(-2px);
-}
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: opacity 0.3s, transform 0.6s;
-}
-.gallery-item:hover img { transform: scale(1.04); }
-.gallery-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: #fff;
-  text-align: center;
-  padding: 1.5rem 0.5rem 0.7rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2) 60%, transparent);
-  letter-spacing: 0.04em;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.gallery-item:hover .gallery-caption { opacity: 1; }
-
-@media (max-width: 640px) {
-  .gallery-marquee { margin-top: 1.8rem; }
-  .gallery-item { width: 280px; }
-  .gallery-caption { opacity: 1; font-size: 0.85rem; padding: 1rem 0.5rem 0.5rem; }
-}
 
 /* Guestbook (native — no iframe) */
 .guestbook-intro {
@@ -501,30 +439,36 @@ section {
 #comment-form {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 1rem;
   margin-bottom: 2.5rem;
-  padding: 1.25rem;
+  padding: 1.75rem 1.75rem 1.5rem;
   border: 1px solid var(--color-border);
   border-radius: 4px;
   background: var(--color-bg);
 }
-#comment-form .form-row { display: flex; gap: 0.7rem; }
+#comment-form .form-row { display: flex; gap: 0.9rem; }
 #comment-form .form-row input { flex: 1; min-width: 0; }
 #comment-form input,
 #comment-form textarea {
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 1rem;
   color: var(--color-text);
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 3px;
-  padding: 0.55rem 0.7rem;
+  padding: 0.7rem 0.85rem;
   outline: none;
   transition: border-color 0.2s;
+  width: 100%;
 }
 #comment-form input:focus,
 #comment-form textarea:focus { border-color: var(--color-accent); }
-#comment-form textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+#comment-form textarea {
+  resize: vertical;
+  min-height: 160px;
+  line-height: 1.65;
+  display: block;
+}
 #comment-form .form-actions {
   display: flex;
   align-items: center;
@@ -541,14 +485,14 @@ section {
 }
 #comment-form button[type="submit"] {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: 0.01em;
   color: var(--color-bg);
   background: var(--color-accent);
   border: 1px solid var(--color-accent);
-  padding: 0.5rem 1.4rem;
+  padding: 0.5rem 1.6rem;
   border-radius: 3px;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
@@ -685,7 +629,7 @@ body, nav { transition: background-color 0.3s ease, color 0.3s ease, border-colo
     box-shadow: 0 4px 12px var(--color-shadow);
   }
   .nav-links.open { display: flex; }
-  .nav-links a { font-size: 1rem; letter-spacing: 0.18em; }
+  .nav-links a { font-size: 1.15rem; letter-spacing: 0; }
 
   .hero {
     grid-template-columns: 1fr;
@@ -701,8 +645,8 @@ body, nav { transition: background-color 0.3s ease, color 0.3s ease, border-colo
   .hero-bio:first-of-type { text-align: left; }
   .hero-links { justify-content: center; }
 
-  .section-title { font-size: 1.3rem; letter-spacing: 0.2em; }
-  .edu-item { grid-template-columns: 1fr; gap: 0.2rem; text-align: center; }
+  .section-title { font-size: 1.7rem; letter-spacing: 0; }
+  .edu-item { grid-template-columns: 1fr; gap: 0.3rem; text-align: center; margin-bottom: 1.6rem; }
   .edu-year { text-align: center; }
   section { padding: 2rem 1.5rem; }
   .divider { padding: 1rem 1.5rem; }
@@ -727,7 +671,7 @@ body, nav { transition: background-color 0.3s ease, color 0.3s ease, border-colo
   .hero-bio { font-size: 1rem; }
   .hero-links { gap: 0.6rem; }
   .hero-links a { padding: 0.4rem 0.9rem; font-size: 0.85rem; }
-  .section-title { font-size: 1.2rem; letter-spacing: 0.16em; }
+  .section-title { font-size: 1.55rem; letter-spacing: 0; }
   .interest-tag { font-size: 0.95rem; padding: 0.35rem 1rem; }
   .research-intro, .misc-text { font-size: 1rem; }
   .edu-details h3 { font-size: 1.1rem; }
