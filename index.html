@@ -154,6 +154,52 @@
       <em>vibe coding</em>.
     </p>
 
+    <!-- Gallery: 16:9 cards, auto-scrolling marquee with manual drag/swipe -->
+    <div class="gallery-marquee fade-in" data-stagger="3">
+      <div class="gallery-track">
+        <div class="gallery-item">
+          <img src="gallery/cocktails.jpg" alt="Cocktails on the bar" loading="lazy">
+          <div class="gallery-caption" data-zh="鸡尾酒">Cocktails</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery/quant.jpg" alt="Quant finance on a laptop" loading="lazy">
+          <div class="gallery-caption" data-zh="量化金融">Quant Finance</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery/coffee-view.jpg" alt="Coffee with a hilltop view" loading="lazy">
+          <div class="gallery-caption" data-zh="山顶咖啡">Coffee, hilltop view</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery/coffee-pourover.jpg" alt="Pour-over coffee setup" loading="lazy">
+          <div class="gallery-caption" data-zh="手冲咖啡">Pour-over</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery/coffee-kettle.jpg" alt="Pour-over kettle with thermometer" loading="lazy">
+          <div class="gallery-caption" data-zh="慢煮">Slow brew</div>
+        </div>
+        <!-- Duplicate set for seamless looping -->
+        <div class="gallery-item" aria-hidden="true">
+          <img src="gallery/cocktails.jpg" alt="" loading="lazy">
+          <div class="gallery-caption" data-zh="鸡尾酒">Cocktails</div>
+        </div>
+        <div class="gallery-item" aria-hidden="true">
+          <img src="gallery/quant.jpg" alt="" loading="lazy">
+          <div class="gallery-caption" data-zh="量化金融">Quant Finance</div>
+        </div>
+        <div class="gallery-item" aria-hidden="true">
+          <img src="gallery/coffee-view.jpg" alt="" loading="lazy">
+          <div class="gallery-caption" data-zh="山顶咖啡">Coffee, hilltop view</div>
+        </div>
+        <div class="gallery-item" aria-hidden="true">
+          <img src="gallery/coffee-pourover.jpg" alt="" loading="lazy">
+          <div class="gallery-caption" data-zh="手冲咖啡">Pour-over</div>
+        </div>
+        <div class="gallery-item" aria-hidden="true">
+          <img src="gallery/coffee-kettle.jpg" alt="" loading="lazy">
+          <div class="gallery-caption" data-zh="慢煮">Slow brew</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <div class="divider"><span class="fleuron">❦</span></div>
@@ -240,6 +286,103 @@
         document.querySelector('.nav-toggle').classList.remove('active');
       });
     });
+
+    /* Gallery: continuous slow auto-scroll with seamless wrap, pause on hover,
+       mouse drag-to-scroll. Touch swipe & wheel work natively via overflow-x. */
+    (function initGallery() {
+      const marquee = document.querySelector('.gallery-marquee');
+      const track = marquee && marquee.querySelector('.gallery-track');
+      if (!marquee || !track) return;
+
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const SPEED_PX_PER_S = 28;
+      const IDLE_RESUME_MS = 2000;
+      const DRAG_THRESHOLD_PX = 5;
+
+      const UNIQUE_COUNT = track.querySelectorAll('.gallery-item:not([aria-hidden="true"])').length;
+      let halfWidth = 0;
+      let lastTs = null;
+      let lastInteractionAt = 0;
+      let isHovering = false;
+      let isDragging = false;
+      let pendingClickSuppress = false;
+
+      function recomputeHalf() {
+        const items = track.querySelectorAll('.gallery-item');
+        halfWidth = items.length > UNIQUE_COUNT ? items[UNIQUE_COUNT].offsetLeft : 0;
+      }
+      recomputeHalf();
+      window.addEventListener('resize', recomputeHalf);
+      window.addEventListener('load', recomputeHalf);
+      track.querySelectorAll('img').forEach(img => {
+        if (!img.complete) img.addEventListener('load', recomputeHalf);
+      });
+
+      function wrapScroll() {
+        if (halfWidth <= 0) return;
+        if (marquee.scrollLeft >= halfWidth) marquee.scrollLeft -= halfWidth;
+        else if (marquee.scrollLeft < 0) marquee.scrollLeft += halfWidth;
+      }
+      function shouldAutoScroll() {
+        if (reduceMotion) return false;
+        if (isHovering || isDragging) return false;
+        if (lastInteractionAt && Date.now() - lastInteractionAt < IDLE_RESUME_MS) return false;
+        return true;
+      }
+      function tick(ts) {
+        if (lastTs == null) lastTs = ts;
+        const dt = (ts - lastTs) / 1000;
+        lastTs = ts;
+        if (shouldAutoScroll() && halfWidth > 0) {
+          marquee.scrollLeft += SPEED_PX_PER_S * dt;
+          wrapScroll();
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      function markInteraction() { lastInteractionAt = Date.now(); }
+      marquee.addEventListener('scroll', () => { if (!isDragging) wrapScroll(); }, { passive: true });
+      marquee.addEventListener('wheel', markInteraction, { passive: true });
+      marquee.addEventListener('touchstart', markInteraction, { passive: true });
+      marquee.addEventListener('touchend', markInteraction, { passive: true });
+      marquee.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') isHovering = true; });
+      marquee.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') isHovering = false; });
+
+      let dragStartX = 0, dragStartScroll = 0, dragMoved = 0;
+      marquee.addEventListener('pointerdown', (e) => {
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
+        isDragging = true;
+        dragMoved = 0;
+        dragStartX = e.clientX;
+        dragStartScroll = marquee.scrollLeft;
+        marquee.classList.add('dragging');
+        marquee.setPointerCapture(e.pointerId);
+        markInteraction();
+      });
+      marquee.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - dragStartX;
+        dragMoved = Math.max(dragMoved, Math.abs(dx));
+        marquee.scrollLeft = dragStartScroll - dx;
+        wrapScroll();
+      });
+      function endDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        marquee.classList.remove('dragging');
+        if (dragMoved > DRAG_THRESHOLD_PX) pendingClickSuppress = true;
+        markInteraction();
+      }
+      marquee.addEventListener('pointerup', endDrag);
+      marquee.addEventListener('pointercancel', endDrag);
+      marquee.addEventListener('click', (e) => {
+        if (pendingClickSuppress) {
+          e.stopPropagation(); e.preventDefault();
+          pendingClickSuppress = false;
+        }
+      }, true);
+    })();
 
     function toggleTheme() {
       const root = document.documentElement;
