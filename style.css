@@ -37,10 +37,6 @@ hr { margin: 0; border: 0; border-top: 1px dashed var(--line); }
 .edu-item:last-child { margin-bottom: 0; }
 .edu-year, .field { color: var(--muted); }
 em { font-style: normal; }
-.photo-directory { margin-top: 1.25rem; }
-summary { cursor: pointer; color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
-.photo-directory ul { list-style: "+ "; padding-left: 2ch; }
-.file-type { color: var(--muted); font-size: .875rem; }
 .form-row { display: flex; flex-wrap: wrap; gap: .75rem; }
 input, textarea { font: inherit; color: var(--ink); background: var(--field); border: 1px solid var(--line); border-radius: 0; padding: .6rem; width: 100%; }
 input { flex: 1 1 14rem; min-width: 0; }
@@ -65,7 +61,7 @@ footer { margin-top: 1.5rem; font-size: .875rem; }
 /* Native CSS cursors: no tracking script; touch devices keep their normal behavior. */
 @media (hover: hover) and (pointer: fine) {
   html { cursor: url("cursors/arrow.svg") 0 0, default; }
-  a, a *, button, button *, summary, summary * { cursor: url("cursors/hand.svg") 10 0, pointer; }
+  a, a *, button, button * { cursor: url("cursors/hand.svg") 10 0, pointer; }
   input, textarea, [contenteditable="true"] { cursor: text; }
   button:disabled, button:disabled * { cursor: wait; }
 }
