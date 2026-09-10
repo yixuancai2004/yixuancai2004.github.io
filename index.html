@@ -24,21 +24,17 @@
   <meta name="twitter:description" content="PhD student at NTU CCDS, advised by Prof. Wei Dong. Research interest: Differential Privacy.">
   <meta name="twitter:image" content="https://yixuancai2004.github.io/photo.jpg">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='82' font-family='Georgia, serif' font-size='95' font-weight='bold' fill='%23c9a96e' text-anchor='middle'>Yc</text></svg>">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="top">
+<a class="skip-link" href="#about">Skip to content</a>
+<header class="site-header"><p class="site-path">~/yixuan/README.txt</p><p class="site-description">Yixuan Cai / personal homepage</p></header>
 
-<nav>
+<nav aria-label="Main navigation">
   <div class="nav-inner">
-    <div class="logo-box"><a href="#" class="nav-name">Yixuan Cai</a></div>
 
-    <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+
+
 
     <ul class="nav-links">
       <li><a href="#about" data-zh="关于">About</a></li>
@@ -49,18 +45,17 @@
     </ul>
 
     <div class="nav-right-box">
-      <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">中</button>
-      <button class="theme-toggle" onclick="toggleTheme()" title="Switch mode">&#9683;</button>
+      <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">[中文]</button>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Switch mode">[auto]</button>
     </div>
   </div>
 </nav>
 
+  <main>
   <!-- ABOUT -->
   <section class="hero" id="about">
-    <div class="hero-photo-wrapper fade-in">
-      <img src="photo.jpg" alt="Photo of Yixuan Cai" class="hero-photo" onerror="this.style.display='none'">
-    </div>
-    <div class="hero-text fade-in" style="transition-delay: 0.15s">
+    <div class="hero-text">
+      <p class="section-index">[00] ABOUT</p>
       <h1 class="hero-name">Yixuan Cai <span class="hero-name-en-alt">(Ivan)</span></h1>
       <div class="hero-name-cn">蔡逸轩 <span style="font-size: 0.95rem; color: var(--color-light); font-weight: 400;">(Cài Yìxuān)</span></div>
       <div class="pronunciation">
@@ -83,37 +78,40 @@
         My research interests lie in <strong>Differential Privacy</strong> and <strong>AI Privacy</strong>.
       </p>
       <div class="hero-links">
-        <a href="mailto:CAIY0065@e.ntu.edu.sg" class="primary" data-zh="✉ 邮件">&#9993; Email</a>
+        <a href="mailto:CAIY0065@e.ntu.edu.sg" class="primary" data-zh="邮件">Email</a>
         <a href="https://github.com/yixuancai2004">GitHub</a>
+        <a href="photo.jpg" data-zh="照片.jpg">portrait.jpg</a>
       </div>
     </div>
   </section>
 
-  <div class="divider"><span class="fleuron">❦</span></div>
+  <hr>
 
   <!-- RESEARCH -->
   <section id="research">
-    <h2 class="section-title fade-in" data-zh="研究">Research</h2>
+    <p class="section-index">[01] RESEARCH</p>
+    <h2 class="section-title" data-zh="研究">Research</h2>
 
-    <div class="research-interests fade-in" data-stagger="1">
+    <div class="research-interests">
       <span class="interest-tag" data-zh="差分隐私">Differential Privacy</span>
       <span class="interest-tag" data-zh="AI 隐私">AI Privacy</span>
     </div>
 
-    <p class="research-intro fade-in" data-stagger="2" data-zh="我对隐私保护下的数据分析与机器学习感兴趣 —— 从差分隐私的理论基础与机制设计，到现代 AI 系统中的隐私挑战。论文与详情稍后更新。">
+    <p class="research-intro" data-zh="我对隐私保护下的数据分析与机器学习感兴趣 —— 从差分隐私的理论基础与机制设计，到现代 AI 系统中的隐私挑战。论文与详情稍后更新。">
       I am broadly interested in privacy-preserving data analysis and machine learning —
       from the foundations and mechanisms of differential privacy to privacy challenges
       that arise in modern AI systems. More details and papers coming soon.
     </p>
   </section>
 
-  <div class="divider"><span class="fleuron">❦</span></div>
+  <hr>
 
   <!-- EDUCATION -->
   <section id="education">
-    <h2 class="section-title fade-in" data-zh="教育">Education</h2>
+    <p class="section-index">[02] EDUCATION</p>
+    <h2 class="section-title" data-zh="教育">Education</h2>
     <div style="margin-top: 2rem;">
-      <div class="edu-item fade-in">
+      <div class="edu-item">
         <span class="edu-year">2026 –</span>
         <div class="edu-details">
           <h3 data-zh="博士">Ph.D.</h3>
@@ -121,14 +119,14 @@
           <div class="field" data-zh="计算与数据科学学院（CCDS）">College of Computing and Data Science (CCDS)</div>
         </div>
       </div>
-      <div class="edu-item fade-in">
+      <div class="edu-item">
         <span class="edu-year" data-zh="2025 年 1–5 月">Jan – May 2025</span>
         <div class="edu-details">
           <h3 data-zh="访问学生">Visiting Student</h3>
           <div class="school" data-zh="加州大学伯克利分校">University of California, Berkeley</div>
         </div>
       </div>
-      <div class="edu-item fade-in">
+      <div class="edu-item">
         <span class="edu-year">2022 – 26</span>
         <div class="edu-details">
           <h3 data-zh="经济学学士">B.A. in Economics</h3>
@@ -139,199 +137,66 @@
     </div>
   </section>
 
-  <div class="divider"><span class="fleuron">❦</span></div>
+  <hr>
 
   <!-- MISCELLANEOUS -->
   <section id="misc">
-    <h2 class="section-title fade-in" data-zh="其他">Miscellaneous</h2>
-    <p class="misc-text fade-in" data-stagger="1" data-zh="工作之余，我的日子里少不了 <em>嘻哈</em>、<em>咖啡</em>、<em>阅读</em>、<em>骑行</em>，偶尔来一杯 <em>鸡尾酒</em>。">
+    <p class="section-index">[03] MISC</p>
+    <h2 class="section-title" data-zh="其他">Miscellaneous</h2>
+    <p class="misc-text" data-zh="工作之余，我的日子里少不了 <em>嘻哈</em>、<em>咖啡</em>、<em>阅读</em>、<em>骑行</em>，偶尔来一杯 <em>鸡尾酒</em>。">
       Outside of research, my days are filled with
       <em>hip-hop</em>, <em>coffee</em>, <em>books</em>, <em>cycling</em>, and the
       occasional <em>cocktail</em>.
     </p>
-    <p class="misc-text fade-in" data-stagger="2" data-zh="稍 geek 的一面：折腾 <em>量化金融</em> 与 <em>vibe coding</em>。">
+    <p class="misc-text" data-zh="稍 geek 的一面：折腾 <em>量化金融</em> 与 <em>vibe coding</em>。">
       On the geekier side, I tinker with <em>quantitative finance</em> and
       <em>vibe coding</em>.
     </p>
 
-    <!-- Gallery: 16:9 cards, auto-scrolling marquee with manual drag/swipe.
-         First item shown by default; ordering is the start-of-marquee anchor. -->
-    <div class="gallery-marquee fade-in" data-stagger="3">
-      <div class="gallery-track">
-        <div class="gallery-item">
-          <img src="gallery/berkeley.jpg" alt="UC Berkeley campus" loading="eager">
-          <div class="gallery-caption" data-zh="伯克利">UC Berkeley</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/hakodate.jpg" alt="Looking out over Hakodate at dusk" loading="lazy">
-          <div class="gallery-caption" data-zh="函馆">Hakodate</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/quiet.jpg" alt="Quiet hours in a Japanese café" loading="lazy">
-          <div class="gallery-caption" data-zh="札幌下午">Sapporo afternoon</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/train.jpg" alt="Sunset on a train" loading="lazy">
-          <div class="gallery-caption" data-zh="横穿内华达">Crossing Nevada</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/pines.jpg" alt="Pine forest overlook" loading="lazy">
-          <div class="gallery-caption" data-zh="大叻皇宫">Đà Lạt Palace</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/lookout.jpg" alt="Forest edge lookout" loading="lazy">
-          <div class="gallery-caption" data-zh="西雅图奥林匹克">Olympic, Seattle</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/road.jpg" alt="On the road" loading="lazy">
-          <div class="gallery-caption" data-zh="胡志明">Ho Chi Minh</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/chicago.jpg" alt="Chicago skyline" loading="lazy">
-          <div class="gallery-caption" data-zh="芝加哥">Chicago</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/lunch.jpg" alt="Lunch at the harbor" loading="lazy">
-          <div class="gallery-caption" data-zh="海陆双拼">Surf &amp; turf</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/colorado.jpg" alt="Garden of the Gods, Colorado" loading="lazy">
-          <div class="gallery-caption" data-zh="众神花园">Garden of the Gods</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/summit.jpg" alt="Snowy summit" loading="lazy">
-          <div class="gallery-caption" data-zh="丹佛派克峰">Pikes Peak</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/hiphop.jpg" alt="Hip-hop show, Modernsky Lab Shanghai" loading="lazy">
-          <div class="gallery-caption" data-zh="嘻哈">Hip-hop</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/sushi.jpg" alt="Omakase sushi" loading="lazy">
-          <div class="gallery-caption" data-zh="寿司">Omakase</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/office.jpg" alt="Office banner" loading="lazy">
-          <div class="gallery-caption" data-zh="办公日常">Office vibes</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/cocktails.jpg" alt="Cocktails on the bar" loading="lazy">
-          <div class="gallery-caption" data-zh="鸡尾酒">Cocktails</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/quant.jpg" alt="Quant finance on a laptop" loading="lazy">
-          <div class="gallery-caption" data-zh="量化金融">Quant Finance</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/coffee-view.jpg" alt="Coffee with a hilltop view" loading="lazy">
-          <div class="gallery-caption" data-zh="山顶咖啡">Coffee, hilltop view</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/coffee-pourover.jpg" alt="Pour-over coffee setup" loading="lazy">
-          <div class="gallery-caption" data-zh="手冲咖啡">Pour-over</div>
-        </div>
-        <div class="gallery-item">
-          <img src="gallery/coffee-kettle.jpg" alt="Pour-over kettle with thermometer" loading="lazy">
-          <div class="gallery-caption" data-zh="慢煮">Slow brew</div>
-        </div>
-        <!-- Duplicate set for seamless looping -->
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/berkeley.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="伯克利">UC Berkeley</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/hakodate.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="函馆">Hakodate</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/quiet.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="札幌下午">Sapporo afternoon</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/train.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="横穿内华达">Crossing Nevada</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/pines.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="大叻皇宫">Đà Lạt Palace</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/lookout.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="西雅图奥林匹克">Olympic, Seattle</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/road.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="胡志明">Ho Chi Minh</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/chicago.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="芝加哥">Chicago</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/lunch.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="海陆双拼">Surf &amp; turf</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/colorado.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="众神花园">Garden of the Gods</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/summit.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="丹佛派克峰">Pikes Peak</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/hiphop.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="嘻哈">Hip-hop</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/sushi.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="寿司">Omakase</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/office.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="办公日常">Office vibes</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/cocktails.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="鸡尾酒">Cocktails</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/quant.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="量化金融">Quant Finance</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/coffee-view.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="山顶咖啡">Coffee, hilltop view</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/coffee-pourover.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="手冲咖啡">Pour-over</div>
-        </div>
-        <div class="gallery-item" aria-hidden="true">
-          <img src="gallery/coffee-kettle.jpg" alt="" loading="lazy">
-          <div class="gallery-caption" data-zh="慢煮">Slow brew</div>
-        </div>
-      </div>
-    </div>
+    <details class="photo-directory">
+      <summary data-zh="photos/ — 19 张照片">photos/ — 19 photographs</summary>
+      <ul>
+        <li><a href="gallery/berkeley.jpg" data-zh="伯克利">UC Berkeley</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/hakodate.jpg" data-zh="函馆">Hakodate</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/quiet.jpg" data-zh="札幌下午">Sapporo afternoon</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/train.jpg" data-zh="横穿内华达">Crossing Nevada</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/pines.jpg" data-zh="大叻皇宫">Đà Lạt Palace</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/lookout.jpg" data-zh="西雅图奥林匹克">Olympic, Seattle</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/road.jpg" data-zh="胡志明">Ho Chi Minh</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/chicago.jpg" data-zh="芝加哥">Chicago</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/lunch.jpg" data-zh="海陆双拼">Surf &amp; turf</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/colorado.jpg" data-zh="众神花园">Garden of the Gods</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/summit.jpg" data-zh="丹佛派克峰">Pikes Peak</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/hiphop.jpg" data-zh="嘻哈">Hip-hop</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/sushi.jpg" data-zh="寿司">Omakase</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/office.jpg" data-zh="办公日常">Office vibes</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/cocktails.jpg" data-zh="鸡尾酒">Cocktails</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/quant.jpg" data-zh="量化金融">Quant Finance</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/coffee-view.jpg" data-zh="山顶咖啡">Coffee, hilltop view</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/coffee-pourover.jpg" data-zh="手冲咖啡">Pour-over</a><span class="file-type"> .jpg</span></li>
+        <li><a href="gallery/coffee-kettle.jpg" data-zh="慢煮">Slow brew</a><span class="file-type"> .jpg</span></li>
+      </ul>
+    </details>
   </section>
 
-  <div class="divider"><span class="fleuron">❦</span></div>
+  <hr>
 
   <!-- GUESTBOOK -->
   <section id="guestbook">
-    <h2 class="section-title fade-in" data-zh="留言板">Guestbook</h2>
-    <p class="guestbook-intro fade-in" data-stagger="1" data-zh="留个言 ✦">
-      Drop a note ✦
+    <p class="section-index">[04] GUESTBOOK</p>
+    <h2 class="section-title" data-zh="留言板">Guestbook</h2>
+    <p class="guestbook-intro" data-zh="留个言。">
+      Drop a note.
     </p>
 
-    <form id="comment-form" class="fade-in" data-stagger="2" autocomplete="off">
+    <form id="comment-form" class="" autocomplete="off">
       <div class="form-row">
-        <input type="text" name="nickname" required maxlength="40"
+        <input type="text" name="nickname" aria-label="Name / 名字" required maxlength="40"
                placeholder="Name" data-placeholder-en="Name" data-placeholder-zh="名字">
-        <input type="email" name="email" maxlength="120"
+        <input type="email" name="email" aria-label="Email (optional) / 邮箱（可选）" maxlength="120"
                placeholder="Email (optional)" data-placeholder-en="Email (optional)" data-placeholder-zh="邮箱（可选）">
       </div>
-      <textarea name="content" required maxlength="1000" rows="6"
+      <textarea name="content" aria-label="Message / 留言" required maxlength="1000" rows="6"
                 placeholder="Write a message…" data-placeholder-en="Write a message…" data-placeholder-zh="写下你的留言…"></textarea>
       <div class="form-actions">
         <span class="form-status" role="status"></span>
@@ -339,188 +204,33 @@
       </div>
     </form>
 
-    <div id="comments-list" class="fade-in" data-stagger="3" aria-live="polite"></div>
+    <div id="comments-list" class="" aria-live="polite"></div>
   </section>
 
-  <div class="divider"><span class="fleuron">❦</span></div>
+  <hr>
 
+  </main>
   <footer>
     <div class="footer-contact" data-zh='<strong>蔡逸轩 (Ivan)</strong> · 南洋理工大学 计算与数据科学学院<br>Block S3, 01c-101, 50 Nanyang Avenue, Singapore<br><a href="mailto:CAIY0065@e.ntu.edu.sg">CAIY0065@e.ntu.edu.sg</a>'>
       <strong>Yixuan Cai</strong> &middot; College of Computing and Data Science, NTU<br>
       Block S3, 01c-101, 50 Nanyang Avenue, Singapore<br>
       <a href="mailto:CAIY0065@e.ntu.edu.sg">CAIY0065@e.ntu.edu.sg</a>
     </div>
-    <div class="footer-copy" data-zh="© 2026 Yixuan Cai · 最后更新：2026 年 5 月">&copy; 2026 Yixuan Cai &middot; Last updated: May 2026</div>
+    <p><a href="#top" data-zh="返回顶部">Back to top</a></p>
+    <div class="footer-copy" data-zh="© 2026 Yixuan Cai · 最后更新：2026 年 9 月">&copy; 2026 Yixuan Cai &middot; Last updated: September 2026</div>
   </footer>
 
   <script>
-    window.addEventListener('scroll', () => {
-      document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-      /* Fallback: if observer hasn't fired for above-fold items shortly after
-         load, reveal them so the page never sits blank. */
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
-              el.classList.add('visible');
-              observer.unobserve(el);
-            }
-          });
-        }, 100);
-      });
-    } else {
-      /* No observer support → reveal everything immediately. */
-      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
-    }
-
-    function toggleMenu() {
-      const links = document.querySelector('.nav-links');
-      const toggle = document.querySelector('.nav-toggle');
-      links.classList.toggle('open');
-      toggle.classList.toggle('active');
-    }
-
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('open');
-        document.querySelector('.nav-toggle').classList.remove('active');
-      });
-    });
-
-    /* Gallery: continuous slow auto-scroll with seamless wrap, pause on hover,
-       mouse drag-to-scroll. Touch swipe & wheel work natively via overflow-x. */
-    (function initGallery() {
-      const marquee = document.querySelector('.gallery-marquee');
-      const track = marquee && marquee.querySelector('.gallery-track');
-      if (!marquee || !track) return;
-
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const SPEED_PX_PER_S = 28;
-      const IDLE_RESUME_MS = 2000;
-      const DRAG_THRESHOLD_PX = 5;
-
-      const UNIQUE_COUNT = track.querySelectorAll('.gallery-item:not([aria-hidden="true"])').length;
-      let halfWidth = 0;
-      let lastTs = null;
-      let lastInteractionAt = 0;
-      let isHovering = false;
-      let isDragging = false;
-      let pendingClickSuppress = false;
-
-      function recomputeHalf() {
-        const items = track.querySelectorAll('.gallery-item');
-        halfWidth = items.length > UNIQUE_COUNT ? items[UNIQUE_COUNT].offsetLeft : 0;
-      }
-      recomputeHalf();
-      window.addEventListener('resize', recomputeHalf);
-      window.addEventListener('load', recomputeHalf);
-      track.querySelectorAll('img').forEach(img => {
-        if (!img.complete) img.addEventListener('load', recomputeHalf);
-      });
-
-      function wrapScroll() {
-        if (halfWidth <= 0) return;
-        if (marquee.scrollLeft >= halfWidth) marquee.scrollLeft -= halfWidth;
-        else if (marquee.scrollLeft < 0) marquee.scrollLeft += halfWidth;
-      }
-      function shouldAutoScroll() {
-        if (reduceMotion) return false;
-        if (isHovering || isDragging) return false;
-        if (lastInteractionAt && Date.now() - lastInteractionAt < IDLE_RESUME_MS) return false;
-        return true;
-      }
-      function tick(ts) {
-        if (lastTs == null) lastTs = ts;
-        const dt = (ts - lastTs) / 1000;
-        lastTs = ts;
-        if (shouldAutoScroll() && halfWidth > 0) {
-          marquee.scrollLeft += SPEED_PX_PER_S * dt;
-          wrapScroll();
-        }
-        requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-
-      function markInteraction() { lastInteractionAt = Date.now(); }
-      marquee.addEventListener('scroll', () => { if (!isDragging) wrapScroll(); }, { passive: true });
-      marquee.addEventListener('wheel', markInteraction, { passive: true });
-      marquee.addEventListener('touchstart', markInteraction, { passive: true });
-      marquee.addEventListener('touchend', markInteraction, { passive: true });
-      marquee.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') isHovering = true; });
-      marquee.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') isHovering = false; });
-
-      let dragStartX = 0, dragStartScroll = 0, dragMoved = 0;
-      marquee.addEventListener('pointerdown', (e) => {
-        if (e.pointerType !== 'mouse' || e.button !== 0) return;
-        isDragging = true;
-        dragMoved = 0;
-        dragStartX = e.clientX;
-        dragStartScroll = marquee.scrollLeft;
-        marquee.classList.add('dragging');
-        marquee.setPointerCapture(e.pointerId);
-        markInteraction();
-      });
-      marquee.addEventListener('pointermove', (e) => {
-        if (!isDragging) return;
-        const dx = e.clientX - dragStartX;
-        dragMoved = Math.max(dragMoved, Math.abs(dx));
-        marquee.scrollLeft = dragStartScroll - dx;
-        wrapScroll();
-      });
-      function endDrag() {
-        if (!isDragging) return;
-        isDragging = false;
-        marquee.classList.remove('dragging');
-        if (dragMoved > DRAG_THRESHOLD_PX) pendingClickSuppress = true;
-        markInteraction();
-      }
-      marquee.addEventListener('pointerup', endDrag);
-      marquee.addEventListener('pointercancel', endDrag);
-      marquee.addEventListener('click', (e) => {
-        if (pendingClickSuppress) {
-          e.stopPropagation(); e.preventDefault();
-          pendingClickSuppress = false;
-        }
-      }, true);
-    })();
-
     function toggleTheme() {
       const root = document.documentElement;
       const current = root.getAttribute('data-theme');
+      const next = !current ? 'dark' : current === 'dark' ? 'light' : null;
+      if (next) root.setAttribute('data-theme', next);
+      else root.removeAttribute('data-theme');
       const btn = document.querySelector('.theme-toggle');
-      if (!current) {
-        root.setAttribute('data-theme', 'dark');
-        btn.innerHTML = '&#9790;';
-        btn.title = 'Switch to light mode';
-      } else if (current === 'dark') {
-        root.setAttribute('data-theme', 'light');
-        btn.innerHTML = '&#9728;';
-        btn.title = 'Switch to auto (system)';
-      } else {
-        root.removeAttribute('data-theme');
-        btn.innerHTML = '&#9683;';
-        btn.title = 'Switch to dark mode';
-      }
+      btn.textContent = '[' + (next || 'auto') + ']';
+      btn.title = 'Color mode: ' + (next || 'system') + '. Click to change.';
     }
-
-    (function() {
-      const btn = document.querySelector('.theme-toggle');
-      btn.innerHTML = '&#9683;';
-      btn.title = 'Switch to dark mode';
-    })();
 
     /* === Guestbook: native render via Cusdis open API ================== */
     /* No iframe — fetch comments as JSON and render them natively, post via
@@ -668,7 +378,7 @@
       });
       const btn = document.querySelector('.lang-toggle');
       if (btn) {
-        btn.textContent = lang === 'zh' ? 'EN' : '中';
+        btn.textContent = lang === 'zh' ? '[EN]' : '[中文]';
         btn.title = lang === 'zh' ? 'Switch to English' : '切换到中文';
       }
       try { localStorage.setItem('lang', lang); } catch (e) {}
