@@ -10,9 +10,6 @@ a:hover { background: var(--ink); color: var(--paper); }
 :focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
 .skip-link { position: absolute; top: -6rem; }
 .skip-link:focus { top: .25rem; background: var(--paper); }
-.site-header { border-top: 2px solid var(--ink); padding-top: 1rem; }
-.site-path { font-weight: bold; margin: 0; }
-.site-description { color: var(--muted); margin: .25rem 0 1rem; font-size: .875rem; }
 nav { border-top: 1px dashed var(--line); border-bottom: 1px dashed var(--line); padding: .6rem 0; }
 .nav-inner, .nav-links, .nav-right-box { display: flex; flex-wrap: wrap; gap: .35rem 1rem; align-items: center; }
 .nav-links { list-style: none; margin: 0; padding: 0; gap: .25rem .8rem; }
@@ -59,3 +56,8 @@ button:disabled { opacity: .5; cursor: wait; }
 footer { margin-top: 1.5rem; font-size: .875rem; }
 .footer-copy { color: var(--muted); margin-top: 1rem; }
 @media (max-width: 520px) { body { margin: 1rem auto; padding: 0 1rem; } .edu-item { grid-template-columns: 1fr; gap: .15rem; } .nav-inner { gap: .5rem; } section { padding: 1.5rem 0; } }
+
+.hero-text { display: flow-root; }
+.profile-photo { float: right; display: block; width: 140px; max-width: 30%; height: auto; margin: 0 0 1rem 1.5rem; }
+.hero-bio { clear: both; }
+@media (max-width: 520px) { .profile-photo { width: 104px; margin-left: 1rem; } }
