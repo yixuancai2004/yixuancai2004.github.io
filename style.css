@@ -61,3 +61,11 @@ footer { margin-top: 1.5rem; font-size: .875rem; }
 .profile-photo { float: right; display: block; width: 140px; max-width: 30%; height: auto; margin: 0 0 1rem 1.5rem; }
 .hero-bio { clear: both; }
 @media (max-width: 520px) { .profile-photo { width: 104px; margin-left: 1rem; } }
+
+/* Native CSS cursors: no tracking script; touch devices keep their normal behavior. */
+@media (hover: hover) and (pointer: fine) {
+  html { cursor: url("cursors/arrow.svg") 0 0, default; }
+  a, a *, button, button *, summary, summary * { cursor: url("cursors/hand.svg") 10 0, pointer; }
+  input, textarea, [contenteditable="true"] { cursor: text; }
+  button:disabled, button:disabled * { cursor: wait; }
+}
