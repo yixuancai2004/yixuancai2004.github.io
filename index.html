@@ -1,369 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yixuan Cai | PhD Student, NTU CCDS</title>
-  <meta name="description" content="Yixuan Cai (蔡逸轩) — PhD student at NTU CCDS, advised by Prof. Wei Dong. Research interests: Differential Privacy and AI Privacy.">
-  <meta name="author" content="Yixuan Cai">
-  <meta name="keywords" content="Yixuan Cai, 蔡逸轩, NTU CCDS, Wei Dong, Differential Privacy, AI Privacy, Nanjing University, UC Berkeley">
-
-  <link rel="canonical" href="https://yixuancai2004.github.io/">
-
-  <meta property="og:type" content="profile">
-  <meta property="og:title" content="Yixuan Cai | PhD Student, NTU CCDS">
-  <meta property="og:description" content="PhD student at NTU CCDS, advised by Prof. Wei Dong. Research interest: Differential Privacy.">
-  <meta property="og:url" content="https://yixuancai2004.github.io/">
-  <meta property="og:image" content="https://yixuancai2004.github.io/photo.jpg">
-  <meta property="og:locale" content="en_US">
-  <meta property="profile:first_name" content="Yixuan">
-  <meta property="profile:last_name" content="Cai">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yixuan Cai | PhD Student, NTU CCDS">
-  <meta name="twitter:description" content="PhD student at NTU CCDS, advised by Prof. Wei Dong. Research interest: Differential Privacy.">
-  <meta name="twitter:image" content="https://yixuancai2004.github.io/photo.jpg">
-
-  <link rel="icon" type="image/png" href="logo-c.png">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yixuan Cai | PhD Student, NTU CCDS</title>
+<meta name="author" content="Yixuan Cai">
+<meta name="description" content="Yixuan Cai (蔡逸轩) — PhD student at NTU CCDS, advised by Prof. Wei Dong. Research interests: Differential Privacy and AI Privacy.">
+<meta property="og:title" content="Yixuan Cai | PhD Student, NTU CCDS">
+<meta property="og:description" content="PhD student at NTU CCDS, advised by Prof. Wei Dong. Research interest: Differential Privacy.">
+<meta property="og:image" content="https://yixuancai2004.github.io/photo.jpg">
+<meta property="og:url" content="https://yixuancai2004.github.io/">
+<link rel="canonical" href="https://yixuancai2004.github.io/">
+<style>
+body{margin:0;background:#fff;color:#000;}
+a{color:#0000cc;text-decoration:none;}
+a:hover{color:#cc0000;text-decoration:underline;}
+.page{font-family:'Times New Roman',Times,'Songti SC','SimSun',serif;font-size:16px;line-height:1.45;max-width:900px;margin:0 auto;padding:24px 20px 40px;}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px 32px;}
+.contact{line-height:1.35;flex:1 1 380px;min-width:0;}
+.contact .name{font-size:22px;font-weight:bold;}
+.gap{height:1.35em;}
+.side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.side img{width:120px;height:auto;display:block;}
+#lang{font:inherit;background:none;border:0;padding:0;cursor:pointer;color:#0000cc;}
+#lang:hover{color:#cc0000;text-decoration:underline;}
+dl{margin:28px 0 0;}
+dt{font-weight:bold;}
+dd{margin:6px 0 20px 40px;}
+td{vertical-align:top;padding:0 16px 4px 0;}
+td:first-child{white-space:nowrap;}
+.foot{margin-top:32px;border-top:1px solid #000;padding-top:6px;font-size:14px;display:inline-block;}
+html[lang="en"] .zh, html[lang="zh"] .en{display:none;}
+</style>
 </head>
-<body id="top">
-<a class="skip-link" href="#about">Skip to content</a>
-
-<nav aria-label="Main navigation">
-  <div class="nav-inner">
-    <ul class="nav-links">
-      <li><a href="#about" data-zh="关于">About</a></li>
-      <li><a href="#research" data-zh="研究">Research</a></li>
-      <li><a href="#education" data-zh="教育">Education</a></li>
-      <li><a href="#misc" data-zh="其他">Misc</a></li>
-      <li><a href="#guestbook" data-zh="留言板">Guestbook</a></li>
-    </ul>
-
-    <div class="nav-right-box">
-      <button class="lang-toggle" onclick="toggleLang()" title="切换语言 / Switch language">[中文]</button>
-      <button class="theme-toggle" onclick="toggleTheme()" title="Switch mode">[auto]</button>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="contact">
+      <div class="name">Yixuan Cai</div>
+      <div class="gap"></div>
+      <div><span class="en">PhD Student</span><span class="zh">博士研究生</span></div>
+      <div class="gap"></div>
+      <div><a href="https://www.ntu.edu.sg/computing"><span class="en">College of Computing and Data Science</span><span class="zh">计算与数据科学学院</span></a></div>
+      <div><a href="https://www.ntu.edu.sg/"><span class="en">Nanyang Technological University</span><span class="zh">南洋理工大学</span></a></div>
+      <div>caiy0065 at e.ntu dot edu dot sg || <a href="https://github.com/yixuancai2004">GitHub</a></div>
+      <div class="gap"></div>
+      <div><span class="en">Advisor: <a href="https://ntu-dps.com/">Prof. Wei Dong</a></span><span class="zh">导师：<a href="https://ntu-dps.com/">董威教授</a></span></div>
+    </div>
+    <div class="side">
+      <button id="lang" type="button">[<span class="en">中文</span><span class="zh">English</span>]</button>
+      <img src="photo.jpg" alt="Yixuan Cai">
     </div>
   </div>
-</nav>
 
-  <main>
-  <!-- ABOUT -->
-  <section class="hero" id="about">
-    <div class="hero-text">
-      <img class="profile-photo" src="photo.jpg" alt="Yixuan Cai" decoding="async">
-      <p class="section-index">[00] ABOUT</p>
-      <h1 class="hero-name">Yixuan Cai <span class="hero-name-en-alt">(Ivan)</span></h1>
-      <div class="hero-name-cn">蔡逸轩 <span style="font-size: 0.95rem; color: var(--color-light); font-weight: 400;">(Cài Yìxuān)</span></div>
-      <div class="pronunciation">
-        <span data-zh="发音：">Pronunciation:</span> <span class="ipa">/tsaɪ ji.ɕɥɛn/</span>
-      </div>
-      <div class="hero-affiliation" data-zh="南洋理工大学">Nanyang Technological University</div>
-      <div class="hero-title" data-zh="计算与数据科学学院 博士生">PhD Student, College of Computing and Data Science</div>
-      <p class="hero-bio" data-zh='我是南洋理工大学 <a href="https://www.ntu.edu.sg/computing">计算与数据科学学院（CCDS）</a> 的博士生，导师为 <a href="https://ntu-dps.com/">董威 教授</a>。我本科毕业于 <a href="https://www.nju.edu.cn/">南京大学</a> 商学院 经济学专业（拔尖班）。2025 年春季在 <a href="https://www.berkeley.edu/">加州大学伯克利分校</a> 交流访学。目前在 <a href="https://alva.ai/">Alva AI</a> 实习。'>
-        I am a PhD student at the
-        <a href="https://www.ntu.edu.sg/computing">College of Computing and Data Science (CCDS)</a>,
-        Nanyang Technological University, where I am fortunate to be advised by
-        <a href="https://ntu-dps.com/">Prof. Wei Dong</a>.
-        I received my B.A. in Economics from
-        <a href="https://www.nju.edu.cn/">Nanjing University</a>, where I was a member of the Elite Class.
-        I also spent the spring of 2025 as a visiting student at
-        <a href="https://www.berkeley.edu/">UC Berkeley</a>.
-        I am currently interning at <a href="https://alva.ai/">Alva AI</a>.
-      </p>
-      <p class="hero-bio" data-zh='研究方向：<strong>差分隐私（Differential Privacy）</strong> 与 <strong>AI 隐私（AI Privacy）</strong>。'>
-        My research interests lie in <strong>Differential Privacy</strong> and <strong>AI Privacy</strong>.
-      </p>
-      <div class="hero-links">
-        <a href="mailto:CAIY0065@e.ntu.edu.sg" class="primary" data-zh="邮件">Email</a>
-        <a href="https://github.com/yixuancai2004">GitHub</a>
-      </div>
-    </div>
-  </section>
+  <dl>
+    <dt>$ whoami</dt>
+    <dd>
+      <div class="en">I am a PhD student at the <a href="https://www.ntu.edu.sg/computing">College of Computing and Data Science (CCDS)</a>, Nanyang Technological University, where I am fortunate to be advised by <a href="https://ntu-dps.com/">Prof. Wei Dong</a>. I received my B.A. in Economics from <a href="https://www.nju.edu.cn/">Nanjing University</a>, where I was a member of the Elite Class. I also spent the spring of 2025 as a visiting student at <a href="https://www.berkeley.edu/">UC Berkeley</a>.</div>
+      <div class="zh">我目前是南洋理工大学<a href="https://www.ntu.edu.sg/computing">计算与数据科学学院（CCDS）</a>的博士生，有幸师从<a href="https://ntu-dps.com/">董威教授</a>。本科毕业于<a href="https://www.nju.edu.cn/">南京大学</a>，获经济学学士学位，期间为精英班成员。2025 年春季曾在<a href="https://www.berkeley.edu/">加州大学伯克利分校</a>访学。</div>
+    </dd>
 
-  <hr>
+    <dt>$ head research_interests</dt>
+    <dd>
+      <div class="en">My research interests lie in <b>Differential Privacy</b> and <b>AI Privacy</b>. I am broadly interested in privacy-preserving data analysis and machine learning — from the foundations and mechanisms of differential privacy to privacy challenges that arise in modern AI systems.</div>
+      <div class="zh">我的研究兴趣是<b>差分隐私</b>与 <b>AI 隐私</b>。我关注隐私保护的数据分析与机器学习，从差分隐私的基础理论与机制设计，到现代 AI 系统中出现的隐私问题。</div>
+    </dd>
 
-  <!-- RESEARCH -->
-  <section id="research">
-    <p class="section-index">[01] RESEARCH</p>
-    <h2 class="section-title" data-zh="研究">Research</h2>
+    <dt>$ ls -l publication</dt>
+    <dd></dd>
 
-    <div class="research-interests">
-      <span class="interest-tag" data-zh="差分隐私">Differential Privacy</span>
-      <span class="interest-tag" data-zh="AI 隐私">AI Privacy</span>
-    </div>
+    <dt>$ cat education</dt>
+    <dd>
+      <table class="en"><tbody>
+        <tr><td>2026 –</td><td>Ph.D., College of Computing and Data Science, Nanyang Technological University</td></tr>
+        <tr><td>2025 (Spring)</td><td>Visiting Student, University of California, Berkeley</td></tr>
+        <tr><td>2022 – 2026</td><td>B.A. in Economics, Elite Class, School of Business, Nanjing University</td></tr>
+      </tbody></table>
+      <table class="zh"><tbody>
+        <tr><td>2026 –</td><td>博士，南洋理工大学 计算与数据科学学院</td></tr>
+        <tr><td>2025（春）</td><td>访问学生，加州大学伯克利分校</td></tr>
+        <tr><td>2022 – 2026</td><td>经济学学士，南京大学 商学院精英班</td></tr>
+      </tbody></table>
+    </dd>
 
-    <p class="research-intro" data-zh="我对隐私保护下的数据分析与机器学习感兴趣 —— 从差分隐私的理论基础与机制设计，到现代 AI 系统中的隐私挑战。论文与详情稍后更新。">
-      I am broadly interested in privacy-preserving data analysis and machine learning —
-      from the foundations and mechanisms of differential privacy to privacy challenges
-      that arise in modern AI systems. More details and papers coming soon.
-    </p>
-  </section>
+    <dt>$ cat misc</dt>
+    <dd>
+      <div class="en">hip-hop; coffee; books; cycling; the occasional cocktail; quantitative finance; vibe coding</div>
+      <div class="zh">嘻哈；咖啡；读书；骑行；偶尔一杯鸡尾酒；量化金融；vibe coding</div>
+    </dd>
+  </dl>
 
-  <hr>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <p class="section-index">[02] EDUCATION</p>
-    <h2 class="section-title" data-zh="教育">Education</h2>
-    <div style="margin-top: 2rem;">
-      <div class="edu-item">
-        <span class="edu-year">2026 –</span>
-        <div class="edu-details">
-          <h3 data-zh="博士">Ph.D.</h3>
-          <div class="school" data-zh="南洋理工大学">Nanyang Technological University</div>
-          <div class="field" data-zh="计算与数据科学学院（CCDS）">College of Computing and Data Science (CCDS)</div>
-        </div>
-      </div>
-      <div class="edu-item">
-        <span class="edu-year" data-zh="2025 年 1–5 月">Jan – May 2025</span>
-        <div class="edu-details">
-          <h3 data-zh="访问学生">Visiting Student</h3>
-          <div class="school" data-zh="加州大学伯克利分校">University of California, Berkeley</div>
-        </div>
-      </div>
-      <div class="edu-item">
-        <span class="edu-year">2022 – 26</span>
-        <div class="edu-details">
-          <h3 data-zh="经济学学士">B.A. in Economics</h3>
-          <div class="school" data-zh="南京大学">Nanjing University</div>
-          <div class="field" data-zh="商学院 拔尖班">Elite Class, School of Business</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr>
-
-  <!-- MISCELLANEOUS -->
-  <section id="misc">
-    <h2 class="section-title" data-zh="其他">Miscellaneous</h2>
-    <p class="misc-text" data-zh="工作之余，我的日子里少不了 <em>嘻哈</em>、<em>咖啡</em>、<em>阅读</em>、<em>骑行</em>，偶尔来一杯 <em>鸡尾酒</em>。">
-      Outside of research, my days are filled with
-      <em>hip-hop</em>, <em>coffee</em>, <em>books</em>, <em>cycling</em>, and the
-      occasional <em>cocktail</em>.
-    </p>
-    <p class="misc-text" data-zh="稍 geek 的一面：折腾 <em>量化金融</em> 与 <em>vibe coding</em>。">
-      On the geekier side, I tinker with <em>quantitative finance</em> and
-      <em>vibe coding</em>.
-    </p>
-
-  </section>
-
-  <hr>
-
-  <!-- GUESTBOOK -->
-  <section id="guestbook">
-    <p class="section-index">[04] GUESTBOOK</p>
-    <h2 class="section-title" data-zh="留言板">Guestbook</h2>
-    <p class="guestbook-intro" data-zh="留个言。">
-      Drop a note.
-    </p>
-
-    <form id="comment-form" class="" autocomplete="off">
-      <div class="form-row">
-        <input type="text" name="nickname" aria-label="Name / 名字" required maxlength="40"
-               placeholder="Name" data-placeholder-en="Name" data-placeholder-zh="名字">
-        <input type="email" name="email" aria-label="Email (optional) / 邮箱（可选）" maxlength="120"
-               placeholder="Email (optional)" data-placeholder-en="Email (optional)" data-placeholder-zh="邮箱（可选）">
-      </div>
-      <textarea name="content" aria-label="Message / 留言" required maxlength="1000" rows="6"
-                placeholder="Write a message…" data-placeholder-en="Write a message…" data-placeholder-zh="写下你的留言…"></textarea>
-      <div class="form-actions">
-        <span class="form-status" role="status"></span>
-        <button type="submit" data-zh="发送">Post</button>
-      </div>
-    </form>
-
-    <div id="comments-list" class="" aria-live="polite"></div>
-  </section>
-
-  <hr>
-
-  </main>
-  <footer>
-    <div class="footer-contact" data-zh='<strong>蔡逸轩 (Ivan)</strong> · 南洋理工大学 计算与数据科学学院<br>Block S3, 01c-101, 50 Nanyang Avenue, Singapore<br><a href="mailto:CAIY0065@e.ntu.edu.sg">CAIY0065@e.ntu.edu.sg</a>'>
-      <strong>Yixuan Cai</strong> &middot; College of Computing and Data Science, NTU<br>
-      Block S3, 01c-101, 50 Nanyang Avenue, Singapore<br>
-      <a href="mailto:CAIY0065@e.ntu.edu.sg">CAIY0065@e.ntu.edu.sg</a>
-    </div>
-    <p><a href="#top" data-zh="返回顶部">Back to top</a></p>
-    <div class="footer-copy" data-zh="© 2026 Yixuan Cai · 最后更新：2026 年 9 月">&copy; 2026 Yixuan Cai &middot; Last updated: September 2026</div>
-  </footer>
-
-  <script>
-    function toggleTheme() {
-      const root = document.documentElement;
-      const current = root.getAttribute('data-theme');
-      const next = !current ? 'dark' : current === 'dark' ? 'light' : null;
-      if (next) root.setAttribute('data-theme', next);
-      else root.removeAttribute('data-theme');
-      const btn = document.querySelector('.theme-toggle');
-      btn.textContent = '[' + (next || 'auto') + ']';
-      btn.title = 'Color mode: ' + (next || 'system') + '. Click to change.';
-    }
-
-    /* === Guestbook: native render via Cusdis open API ================== */
-    /* No iframe — fetch comments as JSON and render them natively, post via
-       the open API. Output is HTML-escaped so user content can't inject. */
-    const CUSDIS_APP_ID = 'c856b637-e9d3-4594-bf53-e09ab01364a6';
-    const CUSDIS_PAGE_ID = 'guestbook';
-    const CUSDIS_HOST = 'https://cusdis.com';
-    const I18N_GUESTBOOK = {
-      en: {
-        empty: 'No messages yet — be the first.',
-        loading: 'Loading messages…',
-        loadFail: 'Could not load messages.',
-        postingError: 'Could not post — please try again.',
-        postingOk: 'Thanks! Your message is awaiting approval.',
-        anon: 'anonymous'
-      },
-      zh: {
-        empty: '还没有留言 —— 来当第一个吧。',
-        loading: '加载留言中…',
-        loadFail: '加载失败。',
-        postingError: '发送失败，请稍后再试。',
-        postingOk: '感谢留言！等待主人审核后公开。',
-        anon: '匿名'
-      }
-    };
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, c => ({
-        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-      }[c]));
-    }
-    function formatCommentDate(iso, lang) {
-      try {
-        const d = new Date(iso);
-        return d.toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-US', {
-          year: 'numeric', month: 'short', day: 'numeric'
-        });
-      } catch (e) { return ''; }
-    }
-    function renderComment(c, lang) {
-      const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
-      const name = c.by_nickname ? escapeHtml(c.by_nickname) : t.anon;
-      const date = formatCommentDate(c.createdAt, lang);
-      const content = escapeHtml(c.content || '').replace(/\n/g, '<br>');
-      const replies = (c.replies && c.replies.data ? c.replies.data : (c.replies || []))
-        .map(r => `<div class="comment-reply">
-            <div class="comment-meta"><strong>${r.by_nickname ? escapeHtml(r.by_nickname) : t.anon}</strong>
-              <span class="comment-date">· ${formatCommentDate(r.createdAt, lang)}</span></div>
-            <div class="comment-content">${escapeHtml(r.content || '').replace(/\n/g, '<br>')}</div>
-          </div>`).join('');
-      return `<article class="comment">
-        <div class="comment-meta"><strong>${name}</strong>
-          <span class="comment-date">· ${date}</span></div>
-        <div class="comment-content">${content}</div>
-        ${replies}
-      </article>`;
-    }
-    let commentCache = null;
-    async function fetchComments() {
-      const url = `${CUSDIS_HOST}/api/open/comments?appId=${CUSDIS_APP_ID}&pageId=${CUSDIS_PAGE_ID}&pageSize=200`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('fetch failed');
-      const json = await res.json();
-      const list = (json && json.data && json.data.data) ? json.data.data : (json.data || []);
-      commentCache = list;
-      return list;
-    }
-    function renderCommentsList(comments, lang) {
-      const list = document.getElementById('comments-list');
-      if (!list) return;
-      const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
-      if (!comments || !comments.length) {
-        list.innerHTML = `<p class="comments-empty">${t.empty}</p>`;
-        return;
-      }
-      list.innerHTML = comments.map(c => renderComment(c, lang)).join('');
-    }
-    async function loadAndRenderComments(lang) {
-      const list = document.getElementById('comments-list');
-      const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
-      list.innerHTML = `<p class="comments-loading">${t.loading}</p>`;
-      try {
-        const comments = await fetchComments();
-        renderCommentsList(comments, lang);
-      } catch (e) {
-        list.innerHTML = `<p class="comments-empty">${t.loadFail}</p>`;
-      }
-    }
-    function applyGuestbookLang(lang) {
-      document.querySelectorAll('#comment-form [data-placeholder-en]').forEach(el => {
-        el.placeholder = lang === 'zh' ? el.dataset.placeholderZh : el.dataset.placeholderEn;
-      });
-      if (commentCache) {
-        renderCommentsList(commentCache, lang);
-      } else {
-        loadAndRenderComments(lang);
-      }
-    }
-    (function setupCommentForm() {
-      const form = document.getElementById('comment-form');
-      if (!form) return;
-      const status = form.querySelector('.form-status');
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const lang = document.documentElement.lang || 'en';
-        const t = I18N_GUESTBOOK[lang === 'zh' ? 'zh' : 'en'];
-        const fd = new FormData(form);
-        const body = {
-          appId: CUSDIS_APP_ID,
-          pageId: CUSDIS_PAGE_ID,
-          pageTitle: 'Guestbook — Yixuan Cai',
-          pageUrl: 'https://yixuancai2004.github.io/#guestbook',
-          content: fd.get('content'),
-          email: fd.get('email') || '',
-          nickname: fd.get('nickname')
-        };
-        const btn = form.querySelector('button[type="submit"]');
-        btn.disabled = true;
-        status.textContent = '…';
-        try {
-          const res = await fetch(`${CUSDIS_HOST}/api/open/comments`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-          });
-          if (!res.ok) throw new Error('post failed');
-          status.textContent = t.postingOk;
-          form.reset();
-        } catch (err) {
-          status.textContent = t.postingError;
-        } finally {
-          btn.disabled = false;
-          setTimeout(() => { status.textContent = ''; }, 6000);
-        }
-      });
-    })();
-
-    /* === Bilingual toggle ============================================== */
-    /* On first call, cache the original (English) HTML on each [data-zh]
-       element via dataset.en, then swap innerHTML based on current lang. */
-    function applyLang(lang) {
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-zh]').forEach(el => {
-        if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
-        el.innerHTML = lang === 'zh' ? el.getAttribute('data-zh') : el.dataset.en;
-      });
-      const btn = document.querySelector('.lang-toggle');
-      if (btn) {
-        btn.textContent = lang === 'zh' ? '[EN]' : '[中文]';
-        btn.title = lang === 'zh' ? 'Switch to English' : '切换到中文';
-      }
-      try { localStorage.setItem('lang', lang); } catch (e) {}
-      applyGuestbookLang(lang);
-    }
-    function toggleLang() {
-      applyLang((document.documentElement.lang || 'en') === 'zh' ? 'en' : 'zh');
-    }
-    (function initLang() {
-      let saved = null;
-      try { saved = localStorage.getItem('lang'); } catch (e) {}
-      applyLang(saved === 'zh' ? 'zh' : 'en');
-    })();
-
-  </script>
+  <div class="foot"><span class="en">Last modified: 2026-9 by</span><span class="zh">最后修改：2026-9 by</span> <a href="https://yixuancai2004.github.io/">Yixuan Cai</a></div>
+</div>
+<script>
+(function(){
+  var root=document.documentElement;
+  var saved=localStorage.getItem('lang');
+  if(saved==='zh'||saved==='en') root.lang=saved;
+  document.getElementById('lang').onclick=function(){
+    root.lang = root.lang==='en' ? 'zh' : 'en';
+    localStorage.setItem('lang', root.lang);
+  };
+})();
+</script>
 </body>
 </html>
