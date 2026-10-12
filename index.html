@@ -31,6 +31,18 @@ td{vertical-align:top;padding:0 16px 4px 0;}
 td:first-child{white-space:nowrap;}
 .foot{margin-top:32px;border-top:1px solid #000;padding-top:6px;font-size:14px;display:inline-block;}
 html[lang="en"] .zh, html[lang="zh"] .en{display:none;}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+/* phones: photo stays beside the name, text gets the full width */
+@media (max-width:600px){
+  .page{padding:20px 16px 32px;}
+  .top{flex-wrap:nowrap;gap:14px;}
+  .contact{flex:1 1 0;overflow-wrap:anywhere;}
+  .side img{width:88px;}
+  #lang{padding:10px 0 10px 16px;margin:-10px 0 -4px;}
+  dl{margin-top:24px;}
+  dd{margin-left:16px;}
+  td{padding-right:12px;}
+}
 </style>
 </head>
 <body>
@@ -56,8 +68,8 @@ html[lang="en"] .zh, html[lang="zh"] .en{display:none;}
   <dl>
     <dt>$ whoami</dt>
     <dd>
-      <div class="en">I am a PhD student at the <a href="https://www.ntu.edu.sg/computing">College of Computing and Data Science (CCDS)</a>, Nanyang Technological University, where I am fortunate to be advised by <a href="https://ntu-dps.com/">Prof. Wei Dong</a>. I received my B.A. in Economics from <a href="https://www.nju.edu.cn/">Nanjing University</a>, where I was a member of the Elite Class. I also spent the spring of 2025 as a visiting student at <a href="https://www.berkeley.edu/">UC Berkeley</a>.</div>
-      <div class="zh">我目前是南洋理工大学<a href="https://www.ntu.edu.sg/computing">计算与数据科学学院（CCDS）</a>的博士生，有幸师从<a href="https://ntu-dps.com/">董威教授</a>。本科毕业于<a href="https://www.nju.edu.cn/">南京大学</a>，获经济学学士学位，期间为精英班成员。2025 年春季曾在<a href="https://www.berkeley.edu/">加州大学伯克利分校</a>访学。</div>
+      <div class="en">I am a PhD student at the <a href="https://www.ntu.edu.sg/computing">College of Computing and Data Science (CCDS)</a>, Nanyang Technological University, where I am fortunate to be advised by <a href="https://ntu-dps.com/">Prof. Wei Dong</a>. I received my B.A. in Economics from <a href="https://www.nju.edu.cn/">Nanjing University</a>, where I was a member of the Elite Class. I also spent the spring of 2025 as a visiting student at <a href="https://www.berkeley.edu/">UC Berkeley</a>. I am also an intern at the <a href="https://www.ntu.edu.sg/crpo">CyberSG R&amp;D Programme Office (CRPO)</a>.</div>
+      <div class="zh">我目前是南洋理工大学<a href="https://www.ntu.edu.sg/computing">计算与数据科学学院（CCDS）</a>的博士生，有幸师从<a href="https://ntu-dps.com/">董威教授</a>。本科毕业于<a href="https://www.nju.edu.cn/">南京大学</a>，获经济学学士学位，期间为精英班成员。2025 年春季曾在<a href="https://www.berkeley.edu/">加州大学伯克利分校</a>访学。我同时也是 <a href="https://www.ntu.edu.sg/crpo">CyberSG 研发计划办公室（CRPO）</a>的实习生。</div>
     </dd>
 
     <dt>$ head research_interests</dt>
